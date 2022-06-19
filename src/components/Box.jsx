@@ -7,6 +7,8 @@ const Box = ({ boxes, targetKey }) => {
       var bgColor = document.getElementById(e.srcElement.innerText).style
         .backgroundColor
 
+      console.log(bgColor)
+
       e.target.classList.remove('border-dashed')
       e.target.classList.remove('text-gray-500')
       e.target.style.backgroundColor = bgColor
