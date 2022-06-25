@@ -1,14 +1,14 @@
-import { React } from 'react'
+import { React, memo } from 'react'
 import { DropTarget } from 'react-drag-drop-container'
 
-const Box = ({ boxes, targetKey }) => {
+const Box = memo(({ boxes, targetKey }) => {
   const handleDrop = (e) => {
-    if (e.dragElem.innerText === '') {
-      var bgColor = document.getElementById(e.srcElement.innerText).style
-        .backgroundColor
-
-      console.log(bgColor)
-
+    let box = boxes.find((o) => o.class === e.dragData)
+    console.log(box)
+    var bgColor = box.color
+    console.log(bgColor)
+    // Match
+    if (e.dragData.toUpperCase() === e.srcElement.innerHTML) {
       e.target.classList.remove('border-dashed')
       e.target.classList.remove('text-gray-500')
       e.target.style.backgroundColor = bgColor
@@ -40,6 +40,6 @@ const Box = ({ boxes, targetKey }) => {
       </ul>
     </div>
   )
-}
+})
 
 export default Box
