@@ -24,7 +24,7 @@ function Welcome() {
         className="mx-auto text-center mt-40">
         <Link
           className="transform mt-5 w-full border-2 border-[#2d70ac] bg-white rounded-md p-4 uppercase font-bold text-lg cursor-pointer transition duration-200 hover:bg-[#2d70ac]"
-          to="/drag-and-drop">
+          to="/home">
           Let's play
         </Link>
       </motion.div>

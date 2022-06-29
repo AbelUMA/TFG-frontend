@@ -6,9 +6,9 @@ import Sidebar from '../components/Sidebar'
 function Layout() {
   return (
     <>
-      <div className="md:flex md:min-h-screen">
+      <div className="md:flex md:min-h-screen ">
         <Sidebar />
-        <div className="md:w-5/6 p-10 md:h-screen overflow-hidden">
+        <div className="md:w-full p-10 md:h-screen overflow-hidden">
           <Outlet />
         </div>
       </div>

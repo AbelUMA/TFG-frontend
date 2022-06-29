@@ -16,7 +16,7 @@ const Box = memo(({ boxes, targetKey }) => {
   }
 
   return (
-    <div className=" md:w-1/2 lg:w-1/2 md:h-screen">
+    <div className="md:w-1/2 lg:w-1/2 md:h-screen">
       <h2 className="font-black text-3xl text-center">Huecos para completar</h2>
       <p className="text-xl mt-5 mb-10 text-center">
         Comienza arrastrando tarjetas {''}
