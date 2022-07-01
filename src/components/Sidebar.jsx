@@ -1,12 +1,12 @@
+/* eslint-disable no-unused-vars */
 import { React, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { AiOutlineHome } from 'react-icons/ai'
+import { BsChevronUp } from 'react-icons/bs'
+import { BsChevronDown } from 'react-icons/bs'
+import { BsList } from 'react-icons/bs'
 import { VscChromeClose } from 'react-icons/vsc'
 import { motion } from 'framer-motion'
-import { BsList } from 'react-icons/bs'
-import { BsChevronDown } from 'react-icons/bs'
-import { BsChevronUp } from 'react-icons/bs'
-import { CgGames } from 'react-icons/cg'
+import { sidebarMenu } from '../data/menu'
 
 function Sidebar() {
   const showSubMenu = {
@@ -67,83 +67,74 @@ function Sidebar() {
         <div className="flex flex-col justify-between mt-6">
           <aside>
             <ul>
-              <li>
-                <Link
-                  className={`${
-                    currentURL === '/home' ? 'bg-[#1264A3]' : ''
-                  } flex items-center px-4 py-2 text-white rounded-md `}
-                  to="/home">
-                  <AiOutlineHome className="text-2xl" />
-                  <span className="mx-4 font-medium">Home</span>
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  className={`${
-                    currentURL === '/drag-and-drop' ? 'bg-[#1264A3]' : ''
-                  } flex items-center px-4 py-2 mt-5 text-white rounded-md`}
-                  to="#"
-                  onClick={() => setSubmenuOpen(!submenuOpen)}>
-                  <CgGames className="text-2xl" />
-                  <span className="mx-4 font-medium">Juegos</span>
-                  {submenuOpen ? (
-                    <BsChevronUp className="ml-16" />
-                  ) : (
-                    <BsChevronDown className="ml-16" />
-                  )}
-                </Link>
-              </li>
-              {submenuOpen && (
-                <motion.ul
-                  className="list-disc"
-                  variants={showSubMenu}
-                  initial="exit"
-                  animate={submenuOpen ? 'enter' : 'exit'}>
-                  <li className="ml-16 mt-5 text-white">
-                    <Link
-                      to="/drag-and-drop"
-                      className={`${
-                        currentURL === '/drag-and-drop' ? 'bg-[#1264A3]' : ''
-                      } rounded-md px-1 py-1`}>
-                      <span
+              {sidebarMenu.map((menu) => {
+                if (menu.submenu.length === 0) {
+                  return (
+                    <li>
+                      <Link
+                        key={menu.id}
                         className={`${
-                          currentURL === '/drag-and-drop' ? 'bg-[#1264A3]' : ''
-                        } rounded-md py-1 font-medium text-sm`}>
-                        Arrastrar y soltar
-                      </span>
-                    </Link>
-                  </li>
-                  <li className="ml-16 mt-5 text-white">
-                    <Link
-                      to="/drag-and-drop"
-                      className={`${
-                        currentURL === '/juego-2' ? 'bg-[#1264A3]' : ''
-                      } rounded-md px-1 py-1`}>
-                      <span
-                        className={`${
-                          currentURL === '/drag-and-drop' ? 'bg-[#1264A3]' : ''
-                        } rounded-md py-1 font-medium text-sm`}>
-                        Juego 2
-                      </span>
-                    </Link>
-                  </li>
-                  <li className="ml-16 mt-5 text-white">
-                    <Link
-                      to="/drag-and-drop"
-                      className={`${
-                        currentURL === '/juego-3' ? 'bg-[#1264A3]' : ''
-                      } rounded-md px-1 py-1`}>
-                      <span
-                        className={`${
-                          currentURL === '/drag-and-drop' ? 'bg-[#1264A3]' : ''
-                        } rounded-md py-1 font-medium text-sm`}>
-                        Juego 3
-                      </span>
-                    </Link>
-                  </li>
-                </motion.ul>
-              )}
+                          currentURL === menu.url ? 'bg-[#1264A3]' : ''
+                        } flex items-center px-4 py-2 mt-5 text-white rounded-md `}
+                        to={menu.url}>
+                        <div className="text-2xl">{menu.icon}</div>
+                        <span className="mx-4 font-medium">{menu.title}</span>
+                      </Link>
+                    </li>
+                  )
+                } else {
+                  console.log(currentURL)
+                  return (
+                    <>
+                      <li>
+                        <Link
+                          key={menu.id}
+                          className={`${
+                            currentURL === menu.url ? 'bg-[#1264A3]' : ''
+                          } flex items-center px-4 py-2 mt-5 text-white rounded-md `}
+                          to={menu.url}
+                          onClick={() => setSubmenuOpen(!submenuOpen)}>
+                          <div className="text-2xl">{menu.icon}</div>
+                          <span className="mx-4 font-medium">{menu.title}</span>
+                          {submenuOpen ? (
+                            <BsChevronUp className="ml-16" />
+                          ) : (
+                            <BsChevronDown className="ml-16" />
+                          )}
+                        </Link>
+                      </li>
+                      {submenuOpen && (
+                        <motion.ul
+                          className="list-disc"
+                          variants={showSubMenu}
+                          initial="exit"
+                          animate={submenuOpen ? 'enter' : 'exit'}>
+                          {menu.submenu.map((submenu) => (
+                            <li
+                              key={submenu.id}
+                              className="ml-16 mt-5 text-white">
+                              <Link
+                                to={submenu.url}
+                                className={`${
+                                  currentURL === submenu.url
+                                    ? 'bg-[#1264A3]'
+                                    : ''
+                                } rounded-md px-1 py-1`}>
+                                <span
+                                  className={
+                                    'rounded-md py-1 font-medium text-sm'
+                                  }>
+                                  {submenu.title}
+                                </span>
+                              </Link>
+                            </li>
+                          ))}
+                        </motion.ul>
+                      )}
+                    </>
+                  )
+                }
+              })}
             </ul>
           </aside>
         </div>
