@@ -6,8 +6,9 @@ import Box from '../components/Box'
 import Modal from '../components/Modal'
 import { motion } from 'framer-motion'
 import { AiOutlineQuestionCircle } from 'react-icons/ai'
+import Popup from './Popup'
 
-function DragAndDrop() {
+const DragAndDrop = () => {
   const shuffleCards = initialCards.sort(() => Math.random() - 0.5)
   const shuffleBoxes = initialBoxes.sort(() => Math.random() - 0.5)
 
@@ -15,6 +16,17 @@ function DragAndDrop() {
   const [boxes, setBoxes] = useState(shuffleBoxes)
 
   const [isOpenModal, setIsOpenModal] = useState(false)
+  const [isOpenPopup, setIsOpenPopup] = useState(false)
+  //const [score, setScore] = useState(1)
+  let score = 0
+
+  function handleScore() {
+    score++
+    console.log(score)
+    if (score === 9) {
+      setIsOpenPopup(true)
+    }
+  }
 
   return (
     <>
@@ -38,11 +50,12 @@ function DragAndDrop() {
 
         <div className="mt-20 flex items-stretch select-none">
           <Card targetKey="card" cards={cards}></Card>
-          <Box targetKey="card" boxes={boxes}></Box>
+          <Box targetKey="card" boxes={boxes} handleScore={handleScore}></Box>
         </div>
       </>
 
       {isOpenModal && <Modal setIsOpenModal={setIsOpenModal} />}
+      {isOpenPopup && <Popup setIsOpenPopup={setIsOpenPopup} />}
     </>
   )
 }

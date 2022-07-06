@@ -83,7 +83,6 @@ function Sidebar() {
                     </li>
                   )
                 } else {
-                  console.log(currentURL)
                   return (
                     <>
                       <li>

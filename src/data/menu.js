@@ -1,5 +1,6 @@
 import { CgGames } from 'react-icons/cg'
-import { AiOutlineHome } from 'react-icons/ai'
+import { AiOutlineHome, AiOutlineInfoCircle } from 'react-icons/ai'
+import { BiBrain } from 'react-icons/bi'
 
 export const sidebarMenu = [
   {
@@ -34,5 +35,19 @@ export const sidebarMenu = [
         icon: '',
       },
     ],
+  },
+  {
+    id: 6,
+    title: 'Conceptos básicos',
+    url: '/basics-of-programming',
+    icon: <BiBrain />,
+    submenu: '',
+  },
+  {
+    id: 7,
+    title: 'Información',
+    url: '/info',
+    icon: <AiOutlineInfoCircle />,
+    submenu: '',
   },
 ]

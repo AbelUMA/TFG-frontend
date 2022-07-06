@@ -1,8 +1,8 @@
-import { React, memo } from 'react'
+import { React } from 'react'
 import { DragDropContainer } from 'react-drag-drop-container'
 import { motion, useAnimation } from 'framer-motion'
 
-const Card = memo(({ cards, targetKey }) => {
+const Card = ({ cards, targetKey }) => {
   const controls = useAnimation()
 
   const getRandomDelay = () => -(Math.random() * 0.7 + 0.05)
@@ -64,6 +64,6 @@ const Card = memo(({ cards, targetKey }) => {
       </div>
     </div>
   )
-})
+}
 
 export default Card
