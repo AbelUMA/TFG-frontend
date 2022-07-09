@@ -1,7 +1,7 @@
-import { React, memo } from 'react'
+import { React } from 'react'
 import { DropTarget } from 'react-drag-drop-container'
 
-const Box = memo(({ boxes, targetKey, handleScore }) => {
+function Box({ boxes, targetKey, handleScore }) {
   const handleDrop = (e) => {
     let box = boxes.find((o) => o.class === e.dragData)
     var bgColor = box.color
@@ -39,6 +39,6 @@ const Box = memo(({ boxes, targetKey, handleScore }) => {
       </ul>
     </div>
   )
-})
+}
 
 export default Box

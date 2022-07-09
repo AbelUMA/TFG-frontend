@@ -8,7 +8,7 @@ import { motion } from 'framer-motion'
 import { AiOutlineQuestionCircle } from 'react-icons/ai'
 import Popup from './Popup'
 
-const DragAndDrop = () => {
+function DragAndDrop() {
   const shuffleCards = initialCards.sort(() => Math.random() - 0.5)
   const shuffleBoxes = initialBoxes.sort(() => Math.random() - 0.5)
 

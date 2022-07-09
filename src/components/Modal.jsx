@@ -1,4 +1,4 @@
-import { React } from 'react'
+import { React, memo } from 'react'
 import { motion } from 'framer-motion'
 import { VscChromeClose } from 'react-icons/vsc'
 
@@ -46,4 +46,4 @@ function Modal({ setIsOpenModal }) {
   )
 }
 
-export default Modal
+export default memo(Modal)
