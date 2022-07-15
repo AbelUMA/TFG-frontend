@@ -1,19 +1,15 @@
-import { React, memo } from 'react'
+import { React } from 'react'
 import { motion } from 'framer-motion'
 import { VscChromeClose } from 'react-icons/vsc'
 
 function Modal({ setIsOpenModal }) {
-  const hideModal = () => {
-    setIsOpenModal(false)
-  }
-
   return (
     <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex">
       <div className="bg-white p-4 rounded w-full relative mx-80 my-40">
         <motion.button
           whileTap={{ scale: 0.9 }}
           className="left-0 top-0 text-2xl"
-          onClick={hideModal}>
+          onClick={() => setIsOpenModal(false)}>
           <VscChromeClose />
         </motion.button>
         <div className="text-center justify-center items-center">
@@ -46,4 +42,4 @@ function Modal({ setIsOpenModal }) {
   )
 }
 
-export default memo(Modal)
+export default Modal

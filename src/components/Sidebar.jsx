@@ -70,9 +70,8 @@ function Sidebar() {
               {sidebarMenu.map((menu) => {
                 if (menu.submenu.length === 0) {
                   return (
-                    <li>
+                    <li key={menu.id}>
                       <Link
-                        key={menu.id}
                         className={`${
                           currentURL === menu.url ? 'bg-[#1264A3]' : ''
                         } flex items-center px-4 py-2 mt-5 text-white rounded-md `}
@@ -85,9 +84,8 @@ function Sidebar() {
                 } else {
                   return (
                     <>
-                      <li>
+                      <li key={menu.id}>
                         <Link
-                          key={menu.id}
                           className={`${
                             currentURL === menu.url ? 'bg-[#1264A3]' : ''
                           } flex items-center px-4 py-2 mt-5 text-white rounded-md `}
@@ -109,9 +107,7 @@ function Sidebar() {
                           initial="exit"
                           animate={submenuOpen ? 'enter' : 'exit'}>
                           {menu.submenu.map((submenu) => (
-                            <li
-                              key={submenu.id}
-                              className="ml-16 mt-5 text-white">
+                            <li key={menu.id} className="ml-16 mt-5 text-white">
                               <Link
                                 to={submenu.url}
                                 className={`${

@@ -1,7 +1,9 @@
-import { React } from 'react'
+import { React, memo, useState } from 'react'
 import { DropTarget } from 'react-drag-drop-container'
 
-function Box({ boxes, targetKey, handleScore }) {
+function Box({ boxes, targetKey, setIsOpenPopup }) {
+  const [score, setScore] = useState(1)
+
   const handleDrop = (e) => {
     let box = boxes.find((o) => o.class === e.dragData)
     var bgColor = box.color
@@ -10,7 +12,10 @@ function Box({ boxes, targetKey, handleScore }) {
       e.target.classList.remove('border-dashed')
       e.target.classList.remove('text-gray-500')
       e.target.style.backgroundColor = bgColor
-      handleScore()
+      setScore(score + 1)
+      if (score === 9) {
+        setIsOpenPopup(true)
+      }
     }
   }
 
@@ -26,6 +31,7 @@ function Box({ boxes, targetKey, handleScore }) {
       <ul className="grid grid-cols-3 gap-4 mx-10">
         {boxes.map((box) => (
           <DropTarget
+            key={box.id}
             targetKey={targetKey}
             dropData={box.class}
             onHit={handleDrop}>
@@ -41,4 +47,4 @@ function Box({ boxes, targetKey, handleScore }) {
   )
 }
 
-export default Box
+export default memo(Box)

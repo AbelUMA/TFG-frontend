@@ -45,6 +45,7 @@ function Card({ cards, targetKey }) {
         <ul className="grid grid-cols-3 gap-4 mx-10">
           {cards.map((card) => (
             <DragDropContainer
+              key={card.id}
               targetKey={targetKey}
               disappearDraggedElement={true}
               dragData={card.class}

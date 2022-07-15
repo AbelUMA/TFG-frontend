@@ -1,4 +1,4 @@
-import { React, memo } from 'react'
+import { React } from 'react'
 import { motion } from 'framer-motion'
 import { VscChromeClose } from 'react-icons/vsc'
 
@@ -61,4 +61,4 @@ function Popup({ setIsOpenPopup }) {
   )
 }
 
-export default memo(Popup)
+export default Popup

@@ -17,24 +17,15 @@ function DragAndDrop() {
 
   const [isOpenModal, setIsOpenModal] = useState(false)
   const [isOpenPopup, setIsOpenPopup] = useState(false)
-  //const [score, setScore] = useState(1)
-  let score = 0
+  //var score = 0
 
-  function handleScore() {
-    score++
-    console.log(score)
-    if (score === 9) {
-      setIsOpenPopup(true)
-    }
-  }
+  function handleScore() {}
 
   return (
     <>
       <div className="absolute top-10 right-10 text-4xl">
         <motion.button
-          onClick={() => {
-            setIsOpenModal(true)
-          }}
+          onClick={() => setIsOpenModal(true)}
           whileTap={{ scale: 0.9 }}>
           <AiOutlineQuestionCircle />
         </motion.button>
@@ -50,7 +41,10 @@ function DragAndDrop() {
 
         <div className="mt-20 flex items-stretch select-none">
           <Card targetKey="card" cards={cards}></Card>
-          <Box targetKey="card" boxes={boxes} handleScore={handleScore}></Box>
+          <Box
+            targetKey="card"
+            boxes={boxes}
+            setIsOpenPopup={setIsOpenPopup}></Box>
         </div>
       </>
 
