@@ -5,7 +5,7 @@ import Card from '../components/Card'
 import Box from '../components/Box'
 import Modal from '../components/Modal'
 import { motion } from 'framer-motion'
-import { AiOutlineQuestionCircle } from 'react-icons/ai'
+import { AiOutlineQuestionCircle, AiOutlineReload } from 'react-icons/ai'
 import Popup from './Popup'
 
 function DragAndDrop() {
@@ -19,10 +19,15 @@ function DragAndDrop() {
   const [isOpenPopup, setIsOpenPopup] = useState(false)
   //var score = 0
 
-  function handleScore() {}
-
   return (
     <>
+      <div className="top-0 right-0 text-4xl">
+        <motion.button
+          onClick={() => window.location.reload()}
+          whileTap={{ scale: 0.9 }}>
+          <AiOutlineReload />
+        </motion.button>
+      </div>
       <div className="absolute top-10 right-10 text-4xl">
         <motion.button
           onClick={() => setIsOpenModal(true)}
