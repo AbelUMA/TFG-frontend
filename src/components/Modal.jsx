@@ -18,7 +18,7 @@ function Modal({ setIsOpenModal }) {
           </h1>
           <ul className="list-disc text-left pl-10 text-2xl">
             <li className="mb-3">
-              Cada carta pertenece a un tipo de estructura
+              Cada carta pertenece a una parte de la programación.
             </li>
             <li className="mb-3">
               Por ejemplo,{' '}
@@ -32,7 +32,11 @@ function Modal({ setIsOpenModal }) {
             </li>
             <li className="mb-3">
               Entonces tu objetivo es conseguir llevar todas las tarjetas a las
-              correspondientes cajas
+              correspondientes cajas.
+            </li>
+            <li className="mb-3">
+              Como consejo, deberías visitar antes el apartado{' '}
+              <span className="font-bold">"Conceptos básicos".</span>
             </li>
             <li className="mb-3">Ánimo, ¡seguro que lo consigues!</li>
           </ul>

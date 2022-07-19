@@ -6,6 +6,28 @@ import { basicsOfProgramming } from '../data/basicsOfProgramming'
 function BasicsOfProgramming() {
   const [content, setContent] = useState({})
 
+  const handleContent = (newContent, id) => {
+    var basic = document.getElementById('content-' + id)
+    basic.innerHTML = `<img id="img-${id}" class='rounded-lg border-4 border-black' src=${newContent}></img>`
+
+    var example = document.getElementById('example')
+    example.classList.add('invisible')
+
+    var close = document.getElementById('close-example')
+    close.classList.remove('invisible')
+  }
+
+  const handleCloseExample = (oldContent, id) => {
+    var example = document.getElementById('example')
+    example.classList.remove('invisible')
+
+    var close = document.getElementById('close-example')
+    close.classList.add('invisible')
+
+    var basic = document.getElementById('content-' + id)
+    basic.innerHTML = oldContent
+  }
+
   return (
     <div className="mt-5 flex items-stretch select-none">
       <div className="md:w-1/2 lg:w-1/2 mx-5">
@@ -37,7 +59,7 @@ function BasicsOfProgramming() {
           ))}
         </div>
       </div>
-      <div className="md:w-1/2 lg:w-1/2 md:h-screen">
+      <div className="md:w-1/2 lg:w-1/2">
         <h2 className="font-black text-3xl text-center">
           Te contamos un poco sobre...
         </h2>
@@ -45,8 +67,27 @@ function BasicsOfProgramming() {
           {content.title}
         </p>
         <div
+          id={'content-' + content.id}
           className="container mt-16 mx-auto font-semibold text-xl flex-col text-center justify-center items-center w-2/3 leading-10"
           dangerouslySetInnerHTML={{ __html: content.text }}></div>
+        {content.extra && (
+          <>
+            <motion.div
+              id="example"
+              onClick={() => handleContent(content.extra, content.id)}
+              whileTap={{ scale: 0.9 }}
+              className="flex-col text-center justify-center items-center mt-8 text-3xl font-bold text-indigo-600 underline cursor-pointer">
+              Ver ejemplo
+            </motion.div>
+            <motion.div
+              id="close-example"
+              onClick={() => handleCloseExample(content.text, content.id)}
+              whileTap={{ scale: 0.9 }}
+              className="flex-col text-center justify-center items-center mt-8 text-3xl font-bold text-indigo-600 underline cursor-pointer invisible">
+              Cerrar
+            </motion.div>
+          </>
+        )}
       </div>
     </div>
   )

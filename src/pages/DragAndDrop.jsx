@@ -17,11 +17,10 @@ function DragAndDrop() {
 
   const [isOpenModal, setIsOpenModal] = useState(false)
   const [isOpenPopup, setIsOpenPopup] = useState(false)
-  //var score = 0
 
   return (
     <>
-      <div className="top-0 right-0 text-4xl">
+      <div className="top-0 right-0 text-3xl">
         <motion.button
           onClick={() => window.location.reload()}
           whileTap={{ scale: 0.9 }}>
