@@ -1,4 +1,8 @@
 import dataTypes from '../media/img/basicsOfProgramming/dataTypes.png'
+import variables from '../media/img/basicsOfProgramming/variables.png'
+import conditionalStructures from '../media/img/basicsOfProgramming/conditionalStructures.png'
+import loops from '../media/img/basicsOfProgramming/loops.png'
+import functions from '../media/img/basicsOfProgramming/functions.png'
 
 export const basicsOfProgramming = [
   {
@@ -10,6 +14,7 @@ export const basicsOfProgramming = [
     id: '2',
     title: 'VARIABLES',
     text: 'LAS <span class="text-indigo-600 font-bold">VARIABLES</span> son &#39;cajas&#39; donde <span class="text-indigo-600 font-bold">almacenamos información</span> (datos de algún tipo). A estas &#39;cajas&#39; se les asignan <span class="text-indigo-600 font-bold">nombres comunes</span> del lenguje humano para identificar que sentido u objetivo tienen. <br> Por ejemplo, si queremos guardar en nuestro programa la edad de &#39;Pepito&#39;, crearemos una variable llamada <span class="text-indigo-600 font-bold">&#39;pepitoEdad&#39;</span>  con su edad. <br> Estas variables se pueden usar para <span class="text-indigo-600 font-bold">informar al usuario</span> de algo, en<span class="text-indigo-600 font-bold"> operaciones matemáticas</span> o simplemente para <span class="text-indigo-600 font-bold">preguntar</span> sobre su valor y dependiendo de eso, que ocurra una cosa u otra.',
+    extra: variables,
   },
   {
     id: '3',
@@ -21,16 +26,19 @@ export const basicsOfProgramming = [
     id: '4',
     title: 'ESTRUCTURAS CONDICIONALES',
     text: 'LAS <span class="text-indigo-600 font-bold">ESTRUCTURAS CONDICIONALES</span> comparan una variable contra otro(s) valor(es), para que en base al resultado de esta comparación, se <span class="text-indigo-600 font-bold">siga un camino u otro</span> dentro del programa. <br> ¿Cómo funciona esto realmente? La estructura condicional mas común es el <span class="text-indigo-600 font-bold">IF-ELSE (si algo - si no, lo otro)</span>, y compara dos valores, variables o datos, y devuelve un resultado <span class="text-indigo-600 font-bold">BOOLEANO (verdadero o falso)</span>. <br> Por ejemplo, queremos ver si nos queda dinero en el banco para ir a hacer la compra. Entonces preguntamos, si tengo dinero en el banco (verdadero BOOLEANO) -> compra, si no (falso BOOLEANO), no compramos.',
+    extra: conditionalStructures,
   },
   {
     id: '5',
     title: 'BUCLES',
     text: '<span class="text-indigo-600 font-bold">LOS BUCLES</span> son trozos de códigos, llamadas tambien <span class="text-indigo-600 font-bold">estructuras de control</span>, donde se <span class="text-indigo-600 font-bold">realiza una acción</span> o parte del programa <span class="text-indigo-600 font-bold">repetidamente</span> hasta cumplir una condición. Los más conocidos son: el bucle <span class="text-indigo-600 font-bold">FOR</span> (para), <span class="text-indigo-600 font-bold">WHILE</span> (mientras), <span class="text-indigo-600 font-bold">DO-WHILE</span> (ejecuta-mientras), etc. El bucle FOR se encarga de <span class="text-indigo-600 font-bold">empezar en una variable</span> (o número), <span class="text-indigo-600 font-bold"> cumplir una condición para continuar, y modificar la variable en que se empieza</span>. WHILE realiza una acción <span class="text-indigo-600 font-bold">mientras se cumpla una condición</span>. Por último, el bucle DO-WHILE, <span class="text-indigo-600 font-bold">ejecuta</span> las sentencias al igual que WHILE pero <span class="text-indigo-600 font-bold">antes de preguntar</span> por la condición, <span class="text-indigo-600 font-bold">ejecuta</span> la acción (en WHILE se pregunta antes).',
+    extra: loops,
   },
   {
     id: '6',
     title: 'FUNCIONES',
     text: '<span class="text-indigo-600 font-bold">LAS FUNCIONES</span> son secciones del código donde se puede realizar una serie de acciones con un único fin y objetivo. Es decir, si necesitamos sumar dos números, podemos crear una función para que se pueda &#39;llamar&#39; en cualquier parte del programa y hacer uso de ella. <br> Lo más potente que tienen las funciones son los <span class="text-indigo-600 font-bold">parámetros</span>. Un parámetro es una <span class="text-indigo-600 font-bold">variable</span> que la función &#39;recoge&#39; y hacer uso de ella &#39;dentro&#39; de la función. Las funciones pueden recibir <span class="text-indigo-600 font-bold">ninguno, uno o múltiples</span> parámetros. Al final de la función, se añade la palabra <span class="text-indigo-600 font-bold">return</span> (devolver) que es el <span class="text-indigo-600 font-bold">valor que acaba devolviendo</span> la función como respuesta. A veces puede ocurrir que no se devuelva <span class="text-indigo-600 font-bold">nada</span>.',
+    extra: functions,
   },
   {
     id: '7',

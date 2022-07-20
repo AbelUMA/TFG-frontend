@@ -72,19 +72,26 @@ function BasicsOfProgramming() {
           dangerouslySetInnerHTML={{ __html: content.text }}></div>
         {content.extra && (
           <>
-            <motion.div
+            <div
               id="example"
-              onClick={() => handleContent(content.extra, content.id)}
-              whileTap={{ scale: 0.9 }}
-              className="flex-col text-center justify-center items-center mt-8 text-3xl font-bold text-indigo-600 underline cursor-pointer">
-              Ver ejemplo
-            </motion.div>
+              className="flex-col text-center justify-center items-center mt-8 text-3xl font-bold text-indigo-600 underline ">
+              <motion.span
+                className="cursor-pointer"
+                whileTap={{ scale: 0.9 }}
+                onClick={() => handleContent(content.extra, content.id)}>
+                Ver ejemplo
+              </motion.span>
+            </div>
             <motion.div
               id="close-example"
-              onClick={() => handleCloseExample(content.text, content.id)}
               whileTap={{ scale: 0.9 }}
               className="flex-col text-center justify-center items-center mt-8 text-3xl font-bold text-indigo-600 underline cursor-pointer invisible">
-              Cerrar
+              <motion.span
+                className="cursor-pointer"
+                whileTap={{ scale: 0.9 }}
+                onClick={() => handleCloseExample(content.text, content.id)}>
+                Cerrar
+              </motion.span>
             </motion.div>
           </>
         )}
