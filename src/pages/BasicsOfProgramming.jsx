@@ -1,9 +1,10 @@
-import { React, useState } from 'react'
-import { BsArrowRight } from 'react-icons/bs'
+import { React, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { basicsOfProgramming } from '../data/basicsOfProgramming'
+import axiosAPI from '../config/axiosAPI'
+import { BsArrowRight } from 'react-icons/bs'
 
 function BasicsOfProgramming() {
+  const [basics, setBasics] = useState([{}])
   const [content, setContent] = useState({})
 
   const handleContent = (newContent, id) => {
@@ -28,6 +29,19 @@ function BasicsOfProgramming() {
     basic.innerHTML = oldContent
   }
 
+  useEffect(() => {
+    const getBasicsOfProgramming = async () => {
+      try {
+        const url = '/basics-of-programming'
+        const { data } = await axiosAPI(url)
+        setBasics(data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getBasicsOfProgramming()
+  }, [])
+
   return (
     <div className="mt-5 flex items-stretch select-none">
       <div className="md:w-1/2 lg:w-1/2 mx-5">
@@ -41,7 +55,7 @@ function BasicsOfProgramming() {
           <span className="text-indigo-600 font-bold">Tema</span>
         </p>
         <div className="container mt-16 mx-auto flex-col justify-center items-center w-2/3">
-          {basicsOfProgramming.map((elem) => (
+          {basics.map((elem) => (
             <motion.div
               whileTap={{ scale: 0.9 }}
               onClick={() => {
