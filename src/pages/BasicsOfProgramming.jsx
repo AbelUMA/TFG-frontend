@@ -1,9 +1,11 @@
 import { React, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import axiosAPI from '../config/axiosAPI'
+import ScaleLoader from 'react-spinners/ScaleLoader'
 import { BsArrowRight } from 'react-icons/bs'
 
 function BasicsOfProgramming() {
+  const [loading, setLoading] = useState(false)
   const [basics, setBasics] = useState([{}])
   const [content, setContent] = useState({})
 
@@ -32,9 +34,11 @@ function BasicsOfProgramming() {
   useEffect(() => {
     const getBasicsOfProgramming = async () => {
       try {
+        setLoading(true)
         const url = '/basics-of-programming'
         const { data } = await axiosAPI(url)
         setBasics(data)
+        setLoading(false)
       } catch (error) {
         console.log(error)
       }
@@ -42,7 +46,9 @@ function BasicsOfProgramming() {
     getBasicsOfProgramming()
   }, [])
 
-  return (
+  return loading ? (
+    <ScaleLoader className="mt-5 flex justify-center text-center" />
+  ) : (
     <div className="mt-5 flex items-stretch select-none">
       <div className="md:w-1/2 lg:w-1/2 mx-5">
         <h2 className="font-black text-3xl text-center">
