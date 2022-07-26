@@ -2,13 +2,13 @@ export const initialCards = [
   {
     id: '1',
     text: 'IF',
-    color: '#8ec70d',
+    color: '#90bf24',
     class: 'condition',
   },
   {
     id: '2',
     text: 'ELSE',
-    color: '#8ec70d',
+    color: '#90bf24',
     class: 'condition',
   },
   {
@@ -26,7 +26,7 @@ export const initialCards = [
   {
     id: '5',
     text: 'SWITCH',
-    color: '#8ec70d',
+    color: '#90bf24',
     class: 'condition',
   },
   {

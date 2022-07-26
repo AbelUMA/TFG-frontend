@@ -24,7 +24,7 @@ function Box({ boxes, targetKey, setIsOpenPopup }) {
       <h2 className="font-black text-3xl text-center">Huecos para completar</h2>
       <p className="text-xl mt-5 mb-10 text-center">
         Comienza arrastrando tarjetas {''}
-        <span className="text-[#e9943b] font-bold">
+        <span className="text-principiaOrange font-bold">
           y aparecerán en este lugar
         </span>
       </p>

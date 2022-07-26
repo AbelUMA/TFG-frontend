@@ -40,7 +40,7 @@ function Card({ cards, targetKey }) {
         </h2>
         <p className="text-lg mt-5 text-center mb-10">
           Colocalas en los {''}
-          <span className="text-[#e9943b] font-bold">Huecos</span>
+          <span className="text-principiaOrange font-bold">Huecos</span>
         </p>
         <ul className="grid grid-cols-3 gap-4 mx-10">
           {cards.map((card) => (

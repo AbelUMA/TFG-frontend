@@ -18,7 +18,7 @@ export const sidebarMenu = [
     submenu: [
       {
         id: 3,
-        title: 'Arrastrar y soltar',
+        title: 'Arrastrar y Soltar',
         url: '/drag-and-drop',
         icon: '',
       },

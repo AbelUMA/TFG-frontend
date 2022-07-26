@@ -22,11 +22,11 @@ function Modal({ setIsOpenModal }) {
             </li>
             <li className="mb-3">
               Por ejemplo,{' '}
-              <span className="bg-[#8b25ab] rounded px-1 font-semibold text-white">
+              <span className="bg-principiaPurple rounded px-1 font-semibold text-white">
                 VAR
               </span>{' '}
               pertenece al tipo{' '}
-              <span className="bg-[#8b25ab] rounded px-1 font-semibold text-white">
+              <span className="bg-principiaPurple rounded px-1 font-semibold text-white">
                 GENERAL
               </span>
             </li>

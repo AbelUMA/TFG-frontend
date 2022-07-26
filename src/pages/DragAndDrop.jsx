@@ -36,10 +36,10 @@ function DragAndDrop() {
       </div>
       <>
         <div className="container mx-auto mt-20 select-none overflow-hidden">
-          <h1 className="font-black text-5xl text-center md:w-2/3 mx-auto">
-            <span className="text-[#e9943b]">Arrastra y suelta</span> las
+          <h1 className="font-black text-5xl text-center md:w-2/3 mx-auto mb-10">
+            <span className="text-principiaOrange">Arrastra y suelta</span> las
             tarjetas en los correspondientes{' '}
-            <span className="text-[#e9943b]">huecos</span>{' '}
+            <span className="text-principiaOrange">huecos</span>{' '}
           </h1>
         </div>
 

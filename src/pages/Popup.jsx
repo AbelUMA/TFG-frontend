@@ -43,12 +43,12 @@ function Popup({ setIsOpenPopup }) {
           <VscChromeClose />
         </motion.button>
         <div className="text-center justify-center h-16 py-16 items-center">
-          <span className="font-black text-5xl bg-[#e9943b] px-8 py-4 rounded-2xl inline-block">
+          <span className="font-black text-5xl bg-principiaOrange px-8 py-4 rounded-2xl inline-block">
             ¡ENHORABUENA!
           </span>
         </div>
         <div className="text-center mt-20 text-3xl font-black">
-          Has conseguido <span className="text-[#e9943b]">GANAR</span>{' '}
+          Has conseguido <span className="text-principiaOrange">GANAR</span>{' '}
         </div>
         <div className="text-center mt-10 text-2xl">
           Ahora sabes diferenciar los principales elementos

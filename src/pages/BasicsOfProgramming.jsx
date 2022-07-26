@@ -56,9 +56,9 @@ function BasicsOfProgramming() {
         </h2>
         <p className="text-lg mt-5 text-center mb-10">
           Pulsa sobre una{' '}
-          <span className="text-indigo-600 font-bold">Pestaña</span> para elegir
-          un {''}
-          <span className="text-indigo-600 font-bold">Tema</span>
+          <span className="text-principiaBlue font-bold">Pestaña</span> para
+          elegir un {''}
+          <span className="text-principiaBlue font-bold">Tema</span>
         </p>
         <div className="container mt-16 mx-auto flex-col justify-center items-center w-2/3">
           {basics.map((elem) => (
@@ -69,7 +69,7 @@ function BasicsOfProgramming() {
               }}
               key={elem.id}
               className={`mb-10 flex flex-wrap break-all rounded-lg border-2 px-8 text-xl py-2 ${
-                elem.title === content.title ? 'text-indigo-600' : ''
+                elem.title === content.title ? 'text-principiaBlue' : ''
               } font-semibold cursor-pointer`}>
               <span className="w-11/12">{elem.title}</span>
               <p className="w-1/12 flex items-center justify-end">
@@ -83,7 +83,7 @@ function BasicsOfProgramming() {
         <h2 className="font-black text-3xl text-center">
           Te contamos un poco sobre...
         </h2>
-        <p className="text-lg mt-5 text-center mb-10 font-bold text-indigo-600">
+        <p className="text-lg mt-5 text-center mb-10 font-bold text-principiaBlue">
           {content.title}
         </p>
         <div
@@ -94,7 +94,7 @@ function BasicsOfProgramming() {
           <>
             <div
               id="example"
-              className="flex-col text-center justify-center items-center mt-8 text-3xl font-bold text-indigo-600 underline ">
+              className="flex-col text-center justify-center items-center mt-8 text-3xl font-bold text-principiaBlue underline ">
               <motion.span
                 className="cursor-pointer"
                 whileTap={{ scale: 0.9 }}
@@ -105,7 +105,7 @@ function BasicsOfProgramming() {
             <motion.div
               id="close-example"
               whileTap={{ scale: 0.9 }}
-              className="flex-col text-center justify-center items-center mt-8 text-3xl font-bold text-indigo-600 underline cursor-pointer invisible">
+              className="flex-col text-center justify-center items-center mt-8 text-3xl font-bold text-principiaBlue underline cursor-pointer invisible">
               <motion.span
                 className="cursor-pointer"
                 whileTap={{ scale: 0.9 }}
