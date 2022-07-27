@@ -24,8 +24,8 @@ export const sidebarMenu = [
       },
       {
         id: 4,
-        title: 'Juego 1',
-        url: '/juego-1',
+        title: 'Quiz',
+        url: '/quiz',
         icon: '',
       },
       {

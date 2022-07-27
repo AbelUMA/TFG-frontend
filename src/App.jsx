@@ -6,6 +6,7 @@ import Information from './pages/Information'
 import Home from './pages/Home'
 import Layout from './layout/Layout'
 import BasicsOfProgramming from './pages/BasicsOfProgramming'
+import Quiz from './components/Quiz'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           />
           <Route path="/home" element={<Home />} />
           <Route path="/drag-and-drop" element={<DragAndDrop />} />
+          <Route path="/quiz" element={<Quiz />} />
           <Route path="/info" element={<Information />} />
         </Route>
       </Routes>
