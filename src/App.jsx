@@ -1,10 +1,11 @@
 import { React } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Welcome from './components/Welcome'
+import Layout from './layout/Layout'
+import Welcome from './pages/Welcome'
 import DragAndDrop from './pages/DragAndDrop'
 import Information from './pages/Information'
 import Home from './pages/Home'
-import Layout from './layout/Layout'
+import Algorithm from './pages/Algorithm'
 import BasicsOfProgramming from './pages/BasicsOfProgramming'
 import Quiz from './components/Quiz'
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/drag-and-drop" element={<DragAndDrop />} />
           <Route path="/quiz" element={<Quiz />} />
+          <Route path="/algorithm" element={<Algorithm />} />
           <Route path="/info" element={<Information />} />
         </Route>
       </Routes>

@@ -30,8 +30,8 @@ export const sidebarMenu = [
       },
       {
         id: 5,
-        title: 'Juego 2',
-        url: '/juego-2',
+        title: 'Algoritmos',
+        url: '/algorithm',
         icon: '',
       },
     ],

@@ -6,18 +6,25 @@ import { questions } from '../data/quiz'
 function Quiz() {
   const [showFinalResults, setShowFinalResults] = useState(false)
   const [score, setScore] = useState(0)
-  const [currentQuestion, setCurrentQuestion] = useState(0)
+  const [currentQuestion, setCurrentQuestion] = useState(1)
 
-  const optionClicked = (isCorrect) => {
+  const optionClicked = (e, isCorrect) => {
     if (isCorrect) {
+      e.target.className += ' bg-principiaGreen'
       setScore(score + 1)
+    } else {
+      e.target.className += ' bg-red-600'
     }
 
-    if (currentQuestion + 1 < questions.length) {
-      setCurrentQuestion(currentQuestion + 1)
-    } else {
-      setShowFinalResults(true)
-    }
+    setTimeout(() => {
+      if (currentQuestion + 1 <= questions.length) {
+        e.target.classList.remove('bg-principiaGreen')
+        e.target.classList.remove('bg-red-600')
+        setCurrentQuestion(currentQuestion + 1)
+      } else {
+        setShowFinalResults(true)
+      }
+    }, 2000)
   }
 
   const restartGame = () => {
@@ -35,16 +42,18 @@ function Quiz() {
         <>
           <div className="flex flex-col mt-16 mb-5 mx-auto bg-gray-600 rounded-xl shadow-xl text-center p-10 w-4/5 h-auto ">
             <h2 className="font-semibold text-2xl text-white">
-              Pregunta 1 de 10
+              Pregunta {currentQuestion} de 10
             </h2>
-            <h3 className="font-bold text-xl mt-10 text-principiaOrange">
-              ¿Cual NO es un tipo de datos válido?
-            </h3>
+            <h3
+              className="font-bold text-xl mt-10 text-principiaOrange"
+              dangerouslySetInnerHTML={{
+                __html: questions[currentQuestion].text,
+              }}></h3>
             <ul className="p-10 space-y-5 font-semibold">
               {questions[currentQuestion].options.map((option) => (
                 <motion.li
                   whileTap={{ scale: 0.9 }}
-                  onClick={() => optionClicked(option.isCorrect)}
+                  onClick={(e) => optionClicked(e, option.isCorrect)}
                   key={option.id}
                   className="w-1/2 border-4 mx-auto rounded-2xl p-4 text-xl bg-gray-400 cursor-pointer">
                   {option.text}
