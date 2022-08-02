@@ -5,9 +5,11 @@ import Welcome from './pages/Welcome'
 import DragAndDrop from './pages/DragAndDrop'
 import Information from './pages/Information'
 import Home from './pages/Home'
-import Algorithm from './pages/Algorithm'
+import Algorithm from './pages/Algorithm/Algorithm'
 import BasicsOfProgramming from './pages/BasicsOfProgramming'
-import Quiz from './components/Quiz'
+import Quiz from './pages/Quiz'
+import AlgorithmExamples from './pages/Algorithm/AlgorithmExamples'
+import AlgorithmYourself from './pages/Algorithm/AlgorithmYourself'
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Route path="/drag-and-drop" element={<DragAndDrop />} />
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/algorithm" element={<Algorithm />} />
+          <Route path="/algorithm/examples" element={<AlgorithmExamples />} />
+          <Route path="/algorithm/yourself" element={<AlgorithmYourself />} />
           <Route path="/info" element={<Information />} />
         </Route>
       </Routes>
