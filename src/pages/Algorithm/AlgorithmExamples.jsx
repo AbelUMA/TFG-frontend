@@ -1,18 +1,39 @@
 import { React, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import axiosAPI from '../../config/axiosAPI'
+import ScaleLoader from 'react-spinners/ScaleLoader'
 import { BsArrowDownCircle, BsArrowUpCircle } from 'react-icons/bs'
-import { examples } from '../../data/algorithmExamples'
 
 function AlgorithmExamples() {
+  const [loading, setLoading] = useState(false)
   const [currentLane, setCurrentLane] = useState(1)
-  const [currentExample, setCurrentExample] = useState(1)
-  const [contentDebugger, setContentDebugger] = useState('')
+  const [currentExample, setCurrentExample] = useState(0)
+  const [examples, setExamples] = useState([{}])
 
-  const findFirstLaneCode = () => {
-    const codeClass = document.getElementsByClassName('code')
+  useEffect(() => {
+    const getAlgorithmExample = async () => {
+      try {
+        setLoading(true)
+        const url = '/algorithm-example'
+        const { data } = await axiosAPI(url)
+        setExamples(data)
+        setLoading(false)
+        addDataCode()
+        //findFirstLaneCode()
+      } catch (error) {
+        console.log(error)
+      }
+    }
 
-    codeClass[0].style.background = '#2986cc'
-    codeClass[0].style.borderRadius = '0.5rem'
+    getAlgorithmExample()
+  }, [examples])
+
+  const addDataCode = () => {
+    const codeElements = document.querySelectorAll('.code')
+
+    codeElements.forEach((element, key) => {
+      element.setAttribute('data-code', key + 1)
+    })
   }
 
   const countCodeClass = () => {
@@ -134,32 +155,25 @@ function AlgorithmExamples() {
     if (currentExample + 1 <= 5) {
       const customDebugger = document.getElementsByClassName('debugger')
       customDebugger.innerHTML = setCurrentExample(currentExample + 1)
+      setTimeout(() => {
+        const startElement = document.getElementsByClassName('start')
+        console.log(startElement)
+
+        startElement[0].style.background = '#2986cc'
+        startElement[0].style.borderRadius = '0.5rem'
+      }, 200)
     }
   }
 
-  useEffect(() => {
-    const addDataCode = () => {
-      const codeElements = document.querySelectorAll('.code')
-
-      codeElements.forEach((element, key) => {
-        element.setAttribute('data-code', key + 1)
-      })
-    }
-
-    addDataCode()
-  }, [])
-
-  setTimeout(() => findFirstLaneCode(), 2000)
-
-  return (
+  return loading && !examples ? (
+    <ScaleLoader className="mt-5 flex justify-center text-center" />
+  ) : (
     <div className="container mx-auto select-none overflow-hidden">
       <div className="mt-5 h-screen flex items-stretch select-none">
         <div className="relative h-4/5 lg:w-1/2 border-2 border-black rounded-md text-center w-full bg-gray-900 mx-2">
-          <h2
-            className="mt-10 text-3xl font-semibold text-white"
-            dangerouslySetInnerHTML={{
-              __html: examples[currentExample].title,
-            }}></h2>
+          <h2 className="mt-10 text-3xl font-semibold text-white">
+            {examples[currentExample].title}
+          </h2>
           <div
             className="mt-14 py-6 px-9 text-xl font-medium text-left text-gray-300 h-2/3"
             dangerouslySetInnerHTML={{
