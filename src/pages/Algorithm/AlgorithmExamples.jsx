@@ -19,14 +19,13 @@ function AlgorithmExamples() {
         setExamples(data)
         setLoading(false)
         addDataCode()
-        //findFirstLaneCode()
       } catch (error) {
         console.log(error)
       }
     }
 
     getAlgorithmExample()
-  }, [examples])
+  }, [])
 
   const addDataCode = () => {
     const codeElements = document.querySelectorAll('.code')
@@ -53,13 +52,16 @@ function AlgorithmExamples() {
       downButton.classList.add('pointer-events-none')
     } else {
       const oldCodeLane = codeClass[currentLane - 1]
-      oldCodeLane.removeAttribute('style')
+      oldCodeLane.setAttribute('style', '')
 
       setCurrentLane(currentLane + 1)
 
       const currentCodeLane = document.querySelector(
         '[data-code="' + (currentLane + 1) + '"]'
       )
+
+      console.log(currentCodeLane)
+
       currentCodeLane.style.background = '#2986cc'
       currentCodeLane.style.borderRadius = '0.5rem'
 
@@ -76,17 +78,37 @@ function AlgorithmExamples() {
     }
 
     switch (currentExample) {
+      case 0:
+        switch (currentLane) {
+          case 1:
+            const number = document.getElementById('number-0')
+            number.innerHTML = 1
+            break
+          case 2:
+            const result = document.getElementById('result-0')
+
+            result.innerHTML = 5
+            const output = document.getElementById('output-0')
+
+            downButton.classList.add('opacity-50')
+            downButton.classList.add('pointer-events-none')
+            output.innerHTML = 5
+            break
+          default:
+            break
+        }
+        break
       case 1:
         switch (currentLane) {
           case 1:
-            const number = document.getElementById('number')
+            const number = document.getElementById('number-1')
             number.innerHTML = 3
             break
           case 2:
             const downButton = document.getElementById('down-button')
             downButton.classList.add('opacity-50')
             downButton.classList.add('pointer-events-none')
-            const output = document.getElementById('output')
+            const output = document.getElementById('output-1')
             output.innerHTML = true
             break
           default:
@@ -109,7 +131,7 @@ function AlgorithmExamples() {
       upButton.classList.add('pointer-events-none')
     } else {
       const oldCodeLane = codeClass[currentLane - 1]
-      oldCodeLane.removeAttribute('style')
+      oldCodeLane.setAttribute('style', '')
 
       setCurrentLane(currentLane - 1)
 
@@ -131,14 +153,30 @@ function AlgorithmExamples() {
     }
 
     switch (currentExample) {
+      case 0:
+        switch (currentLane) {
+          case 2:
+            const number = document.getElementById('number-0')
+            number.innerHTML = ''
+            const result = document.getElementById('result-0')
+            result.innerHTML = ''
+            break
+          case 3:
+            const output = document.getElementById('output-0')
+            output.innerHTML = ''
+            break
+          default:
+            break
+        }
+        break
       case 1:
         switch (currentLane) {
-          case 1:
-            const number = document.getElementById('number')
+          case 2:
+            const number = document.getElementById('number-1')
             number.innerHTML = ''
             break
           case 3:
-            const output = document.getElementById('output')
+            const output = document.getElementById('output-1')
             output.innerHTML = ''
             break
           default:
@@ -152,20 +190,37 @@ function AlgorithmExamples() {
   }
 
   const nextExample = () => {
+    setCurrentLane(1)
+    const upButton = document.getElementById('up-button')
+    const downButton = document.getElementById('down-button')
+
+    upButton.classList.remove('opacity-50')
+    upButton.classList.remove('pointer-events-none')
+    downButton.classList.remove('opacity-50')
+    downButton.classList.remove('pointer-events-none')
     if (currentExample + 1 <= 5) {
       const customDebugger = document.getElementsByClassName('debugger')
       customDebugger.innerHTML = setCurrentExample(currentExample + 1)
       setTimeout(() => {
         const startElement = document.getElementsByClassName('start')
-        console.log(startElement)
 
         startElement[0].style.background = '#2986cc'
         startElement[0].style.borderRadius = '0.5rem'
+        addDataCode()
       }, 200)
     }
   }
 
-  return loading && !examples ? (
+  setTimeout(() => {
+    if (currentLane <= 1) {
+      const startElement = document.getElementsByClassName('start')
+
+      startElement[0].style.background = '#2986cc'
+      startElement[0].style.borderRadius = '0.5rem'
+    }
+  }, 200)
+
+  return loading ? (
     <ScaleLoader className="mt-5 flex justify-center text-center" />
   ) : (
     <div className="container mx-auto select-none overflow-hidden">
