@@ -1,7 +1,7 @@
 module.exports = {
   mode: 'jit',
   content: ['./src/**/*.{js,jsx,ts,tsx,html}', '/public/index.html'],
-  safelist: ['text-[#f1c232]', 'bg-red-600', 'bg-green-600'],
+  safelist: ['text-[#f1c232]'],
   theme: {
     extend: {
       colors: {

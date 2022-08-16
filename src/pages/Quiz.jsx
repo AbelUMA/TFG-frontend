@@ -5,10 +5,10 @@ import { questions } from '../data/quiz'
 function Quiz() {
   const [showFinalResults, setShowFinalResults] = useState(false)
   const [score, setScore] = useState(0)
-  const [currentQuestion, setCurrentQuestion] = useState(1)
+  const [currentQuestion, setCurrentQuestion] = useState(0)
 
   const optionClicked = (e, isCorrect) => {
-    if (currentQuestion + 1 === 10) {
+    if (currentQuestion + 1 === questions.length) {
       setShowFinalResults(true)
     }
 
@@ -20,16 +20,15 @@ function Quiz() {
     })
 
     if (isCorrect) {
-      e.target.className += ' bg-green-600'
+      e.target.style.backgroundColor = '#30ce00'
       setScore(score + 1)
     } else {
-      e.target.className += ' bg-red-600'
+      e.target.style.backgroundColor = '#dd1010'
     }
 
     setTimeout(() => {
       if (currentQuestion + 1 <= questions.length) {
-        e.target.classList.remove('bg-green-600')
-        e.target.classList.remove('bg-red-600')
+        e.target.style.backgroundColor = ''
         setCurrentQuestion(currentQuestion + 1)
       } else {
         setShowFinalResults(true)
@@ -38,7 +37,7 @@ function Quiz() {
         option.classList.remove('opacity-50')
         option.classList.remove('pointer-events-none')
       })
-    }, 2000)
+    }, 200)
   }
 
   const restartGame = () => {
@@ -56,7 +55,7 @@ function Quiz() {
         <>
           <div className="flex flex-col mt-16 mb-5 mx-auto bg-gray-600 rounded-xl shadow-xl text-center p-10 w-4/5 h-auto ">
             <h2 className="font-semibold text-2xl text-white">
-              Pregunta {currentQuestion} de 10
+              Pregunta {currentQuestion + 1} de 10
             </h2>
             <h3
               className="font-bold text-xl mt-10 text-principiaOrange"
@@ -82,7 +81,10 @@ function Quiz() {
           <div className="mt-20 mb-5 flex flex-col mx-auto bg-gray-600 rounded-xl shadow-xl text-center p-10 w-1/2 h-1/2">
             <div className="bg-gray-400 p-7 w-3/4 h-3/4 items-center justify-center m-auto rounded-xl flex flex-col">
               <div className="font-bold text-3xl">Resultado final</div>
-              <div className="mt-5 font-semibold text-2xl">
+              <div
+                className={`mt-5 font-bold text-2xl ${
+                  score >= 5 ? 'text-[#289c28]' : 'text-[#dd1010]'
+                }`}>
                 {score} de {questions.length} - (
                 {(score / questions.length) * 100} %)
               </div>
