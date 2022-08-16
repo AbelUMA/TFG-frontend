@@ -1,6 +1,5 @@
-import { React, useState, useEffect } from 'react'
+import { React, useState } from 'react'
 import { motion } from 'framer-motion'
-import shuffleArray from '../helper/array.js'
 import { questions } from '../data/quiz'
 
 function Quiz() {
@@ -9,8 +8,19 @@ function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(1)
 
   const optionClicked = (e, isCorrect) => {
+    if (currentQuestion + 1 === 10) {
+      setShowFinalResults(true)
+    }
+
+    const options = document.querySelectorAll('.options')
+
+    options.forEach((option) => {
+      option.classList.add('opacity-50')
+      option.classList.add('pointer-events-none')
+    })
+
     if (isCorrect) {
-      e.target.className += ' bg-principiaGreen'
+      e.target.className += ' bg-green-600'
       setScore(score + 1)
     } else {
       e.target.className += ' bg-red-600'
@@ -18,12 +28,16 @@ function Quiz() {
 
     setTimeout(() => {
       if (currentQuestion + 1 <= questions.length) {
-        e.target.classList.remove('bg-principiaGreen')
+        e.target.classList.remove('bg-green-600')
         e.target.classList.remove('bg-red-600')
         setCurrentQuestion(currentQuestion + 1)
       } else {
         setShowFinalResults(true)
       }
+      options.forEach((option) => {
+        option.classList.remove('opacity-50')
+        option.classList.remove('pointer-events-none')
+      })
     }, 2000)
   }
 
@@ -55,7 +69,7 @@ function Quiz() {
                   whileTap={{ scale: 0.9 }}
                   onClick={(e) => optionClicked(e, option.isCorrect)}
                   key={option.id}
-                  className="w-1/2 border-4 mx-auto rounded-2xl p-4 text-xl bg-gray-400 cursor-pointer">
+                  className="w-1/2 border-4 mx-auto rounded-2xl p-4 text-xl bg-gray-400 cursor-pointer options">
                   {option.text}
                 </motion.li>
               ))}

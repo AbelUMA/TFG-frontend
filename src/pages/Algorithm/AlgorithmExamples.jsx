@@ -9,6 +9,8 @@ function AlgorithmExamples() {
   const [currentLane, setCurrentLane] = useState(1)
   const [currentExample, setCurrentExample] = useState(0)
   const [examples, setExamples] = useState([{}])
+  const [whileCont, setWhileCont] = useState(1)
+  const [forCont, setForCont] = useState(1)
 
   useEffect(() => {
     const getAlgorithmExample = async () => {
@@ -59,8 +61,6 @@ function AlgorithmExamples() {
       const currentCodeLane = document.querySelector(
         '[data-code="' + (currentLane + 1) + '"]'
       )
-
-      console.log(currentCodeLane)
 
       currentCodeLane.style.background = '#2986cc'
       currentCodeLane.style.borderRadius = '0.5rem'
@@ -115,7 +115,78 @@ function AlgorithmExamples() {
             break
         }
         break
-
+      case 2:
+        switch (currentLane) {
+          case 1:
+            var text = document.getElementById('text-2')
+            text.innerHTML = ' " " '
+            break
+          case 5:
+            text = document.getElementById('text-2')
+            text.innerHTML = 'hola'
+            const output = document.getElementById('output-2')
+            output.innerHTML = 'hola'
+            break
+          default:
+            break
+        }
+        break
+      case 3:
+        switch (currentLane) {
+          case 1:
+            var count = document.getElementById('count-3')
+            setWhileCont(1)
+            count.innerHTML = whileCont
+            break
+          case 2:
+            if (whileCont < 5) {
+              setWhileCont(whileCont + 1)
+              setCurrentLane(2)
+            } else if (whileCont === 5) {
+              setWhileCont(whileCont + 1)
+              setCurrentLane(3)
+            }
+            count = document.getElementById('count-3')
+            count.innerHTML = whileCont
+            break
+          case 4:
+            const output = document.getElementById('output-3')
+            output.innerHTML = '5'
+            break
+          default:
+            break
+        }
+        break
+      case 4:
+        switch (currentLane) {
+          case 1:
+            var result = document.getElementById('result-4')
+            setForCont(1)
+            result.innerHTML = 0
+            break
+          case 2:
+            var i = document.getElementById('i-4')
+            i.innerHTML = 1
+            if (forCont < 5) {
+              setForCont(forCont + 1)
+              setCurrentLane(2)
+            } else if (forCont === 5) {
+              setCurrentLane(3)
+            }
+            result = document.getElementById('result-4')
+            result.innerHTML = forCont
+            i = document.getElementById('i-4')
+            i.innerHTML = forCont
+            break
+          case 4:
+            const output = document.getElementById('output-4')
+            output.innerHTML = forCont
+            setForCont(forCont - 1)
+            break
+          default:
+            break
+        }
+        break
       default:
         break
     }
@@ -183,6 +254,93 @@ function AlgorithmExamples() {
             break
         }
         break
+      case 2:
+        switch (currentLane) {
+          case 2:
+            var text = document.getElementById('text-2')
+            text.innerHTML = ''
+            break
+          case 6:
+            text = document.getElementById('text-2')
+            text.innerHTML = ' " " '
+            const output = document.getElementById('output-2')
+            output.innerHTML = ''
+            break
+          default:
+            break
+        }
+        break
+      case 3:
+        switch (currentLane) {
+          case 1:
+            setWhileCont(1)
+            break
+          case 2:
+            var count = document.getElementById('count-3')
+            count.innerHTML = ''
+            break
+          case 3:
+            if (whileCont > 1) {
+              setWhileCont(whileCont - 1)
+              setCurrentLane(3)
+            }
+            break
+          case 4:
+            setWhileCont(whileCont - 1)
+            count = document.getElementById('count-3')
+            count.innerHTML = whileCont
+            if (whileCont > 1) {
+              setCurrentLane(4)
+            }
+            break
+          case 5:
+            const output = document.getElementById('output-3')
+            output.innerHTML = ''
+            setWhileCont(whileCont - 1)
+            break
+
+          default:
+            break
+        }
+        break
+      case 4:
+        switch (currentLane) {
+          case 1:
+            setForCont(1)
+            break
+          case 2:
+            var result = document.getElementById('result-4')
+            result.innerHTML = ''
+            var i = document.getElementById('i-4')
+            i.innerHTML = ''
+            setForCont(forCont + 1)
+
+            break
+          case 3:
+            if (forCont > 1) {
+              setForCont(forCont - 1)
+              setCurrentLane(3)
+            }
+            break
+          case 4:
+            result = document.getElementById('result-4')
+            result.innerHTML = forCont
+            i = document.getElementById('i-4')
+            i.innerHTML = forCont
+            setForCont(forCont - 1)
+            if (forCont > 1) {
+              setCurrentLane(4)
+            }
+            break
+          case 5:
+            const output = document.getElementById('output-4')
+            output.innerHTML = ''
+            break
+
+          default:
+            break
+        }
+        break
 
       default:
         break
@@ -194,20 +352,27 @@ function AlgorithmExamples() {
     const upButton = document.getElementById('up-button')
     const downButton = document.getElementById('down-button')
 
-    upButton.classList.remove('opacity-50')
-    upButton.classList.remove('pointer-events-none')
+    upButton.classList.add('opacity-50')
+    upButton.classList.add('pointer-events-none')
     downButton.classList.remove('opacity-50')
     downButton.classList.remove('pointer-events-none')
-    if (currentExample + 1 <= 5) {
-      const customDebugger = document.getElementsByClassName('debugger')
-      customDebugger.innerHTML = setCurrentExample(currentExample + 1)
-      setTimeout(() => {
-        const startElement = document.getElementsByClassName('start')
 
-        startElement[0].style.background = '#2986cc'
-        startElement[0].style.borderRadius = '0.5rem'
-        addDataCode()
-      }, 200)
+    const customDebugger = document.getElementsByClassName('debugger')
+    setCurrentExample(currentExample + 1)
+    customDebugger.innerHTML = currentExample
+
+    setTimeout(() => {
+      const startElement = document.getElementsByClassName('start')
+
+      startElement[0].style.background = '#2986cc'
+      startElement[0].style.borderRadius = '0.5rem'
+      addDataCode()
+    }, 200)
+
+    if (currentExample + 1 === 4) {
+      const nextButton = document.getElementById('next-button')
+      nextButton.classList.add('opacity-50')
+      nextButton.classList.add('pointer-events-none')
     }
   }
 
@@ -245,6 +410,7 @@ function AlgorithmExamples() {
                   className="text-white rounded-full"></BsArrowDownCircle>
               </motion.button>
               <motion.button
+                id="next-button"
                 whileTap={{ scale: 0.9 }}
                 onClick={() => nextExample()}
                 className="text-4xl text-white border-white border-2 rounded-full py-2 px-4 flex justify-center items-center">
@@ -262,11 +428,18 @@ function AlgorithmExamples() {
             </div>
           </div>
         </div>
-        <div className="overflow-hidden h-1/3 lg:w-1/2 border-2 border-black rounded-md text-center justify-center items-center mx-2">
-          <div className="py-6 px-9 text-2xl font-medium">PROGRAMA</div>
+        <div className="lg:w-1/2 ">
+          <div className="h-1/3 border-2 border-black rounded-md text-center justify-center items-center mx-2">
+            <div className="py-6 px-9 text-2xl font-medium">PROGRAMA</div>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: examples[currentExample].debuggerContent,
+              }}></div>
+          </div>
           <div
+            className="h-2/5 text-justify justify-center items-center mx-2 mt-16 bg-gray-400 p-4 border-2 border-black rounded-md"
             dangerouslySetInnerHTML={{
-              __html: examples[currentExample].debuggerContent,
+              __html: examples[currentExample].extraContent,
             }}></div>
         </div>
       </div>
