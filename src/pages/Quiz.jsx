@@ -1,13 +1,34 @@
-import { React, useState } from 'react'
+import { React, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { questions } from '../data/quiz'
+import axiosAPI from '../config/axiosAPI'
+import ScaleLoader from 'react-spinners/ScaleLoader'
 
 function Quiz() {
   const [showFinalResults, setShowFinalResults] = useState(false)
   const [score, setScore] = useState(0)
+  const [questions, setQuestions] = useState([{}])
   const [currentQuestion, setCurrentQuestion] = useState(0)
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    const getQuiz = async () => {
+      try {
+        setLoading(true)
+        const url = '/quiz'
+        const { data } = await axiosAPI(url)
+        data.sort(() => 0.5 - Math.random())
+        setQuestions(data)
+        setLoading(false)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    getQuiz()
+  }, [])
 
   const optionClicked = (e, isCorrect) => {
+    console.log(typeof isCorrect)
     if (currentQuestion + 1 === questions.length) {
       setShowFinalResults(true)
     }
@@ -37,14 +58,16 @@ function Quiz() {
         option.classList.remove('opacity-50')
         option.classList.remove('pointer-events-none')
       })
-    }, 200)
+    }, 2000)
   }
 
   const restartGame = () => {
     window.location.reload()
   }
 
-  return (
+  return loading ? (
+    <ScaleLoader className="mt-5 flex justify-center text-center" />
+  ) : (
     <>
       <div className="flex flex-col text-center justify-center">
         <h1 className="font-bold text-5xl">Quiz de Programación</h1>
@@ -63,15 +86,19 @@ function Quiz() {
                 __html: questions[currentQuestion].text,
               }}></h3>
             <ul className="p-10 space-y-5 font-semibold">
-              {questions[currentQuestion].options.map((option) => (
-                <motion.li
-                  whileTap={{ scale: 0.9 }}
-                  onClick={(e) => optionClicked(e, option.isCorrect)}
-                  key={option.id}
-                  className="w-1/2 border-4 mx-auto rounded-2xl p-4 text-xl bg-gray-400 cursor-pointer options">
-                  {option.text}
-                </motion.li>
-              ))}
+              {questions[currentQuestion].options ? (
+                questions[currentQuestion].options.map((option) => (
+                  <motion.li
+                    whileTap={{ scale: 0.9 }}
+                    onClick={(e) => optionClicked(e, option.isCorrect)}
+                    key={option.id}
+                    className="w-1/2 border-4 mx-auto rounded-2xl p-4 text-xl bg-gray-400 cursor-pointer options">
+                    {option.text}
+                  </motion.li>
+                ))
+              ) : (
+                <ScaleLoader />
+              )}
             </ul>
           </div>
         </>

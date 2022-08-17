@@ -47,9 +47,9 @@ export const questions = [
   {
     text: '¿Qué palabra reservada se usa para finalizar un código y devolver el resultado?',
     options: [
-      { id: 0, text: 'function', isCorrect: false },
-      { id: 1, text: 'result', isCorrect: false },
-      { id: 2, text: 'var', isCorrect: false },
+      { id: 0, text: 'result', isCorrect: false },
+      { id: 1, text: 'function', isCorrect: false },
+      { id: 2, text: 'string', isCorrect: false },
       { id: 3, text: 'return', isCorrect: true },
     ],
   },
