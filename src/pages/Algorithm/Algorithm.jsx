@@ -31,7 +31,7 @@ function Algorithm() {
           <div className="mt-14 py-6 px-9 text-2xl font-medium">
             En esta sección podrás poner a prueba todos tus conocimientos acerca
             de programación ya que, estará a tu disposición diferentes ejemplos
-            de programas y como estos se comportan a nivel interno. <br />
+            de programas. <br />
             Consistirá en múltiples y divertidos ejercicios que van aumentando
             en dificultad donde el principal objetivo es, como es de costumbre,
             aprender más y más sobre la informática y, en concreto, sobre la
