@@ -47,7 +47,6 @@ function Card({ cards, targetKey }) {
             <DragDropContainer
               key={card.id}
               targetKey={targetKey}
-              disappearDraggedElement={true}
               dragData={card.class}
               onDrop={handleDrop}>
               <motion.li
