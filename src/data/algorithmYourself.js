@@ -22,17 +22,17 @@ export const algorithmYourself = [
     options: [
       {
         id: 0,
-        text: 'IF',
+        text: 'ELSE',
         color: 'principiaPurple',
       },
       {
         id: 1,
-        text: 'RETURN',
+        text: 'COUNT',
         color: 'principiaPurple',
       },
       {
         id: 2,
-        text: 'ELSE',
+        text: 'IF',
         color: 'principiaPurple',
       },
     ],

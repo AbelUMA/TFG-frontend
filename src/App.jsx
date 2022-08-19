@@ -10,6 +10,7 @@ import BasicsOfProgramming from './pages/BasicsOfProgramming'
 import Quiz from './pages/Quiz'
 import AlgorithmExamples from './pages/Algorithm/AlgorithmExamples'
 import AlgorithmYourself from './pages/Algorithm/AlgorithmYourself'
+import Exercises from './pages/Algorithm/Exercises'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/algorithm" element={<Algorithm />} />
           <Route path="/algorithm/examples" element={<AlgorithmExamples />} />
           <Route path="/algorithm/yourself" element={<AlgorithmYourself />} />
+          <Route path="/algorithm/yourself/:id" element={<Exercises />} />
           <Route path="/info" element={<Information />} />
         </Route>
       </Routes>
