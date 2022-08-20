@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import axiosAPI from '../config/axiosAPI'
-import ScaleLoader from 'react-spinners/ScaleLoader'
+import Loading from '../components/Loading'
 
 function Quiz() {
   const [showFinalResults, setShowFinalResults] = useState(false)
@@ -65,7 +65,7 @@ function Quiz() {
   }
 
   return loading ? (
-    <ScaleLoader className="mt-5 flex justify-center text-center" />
+    <Loading />
   ) : (
     <>
       <div className="flex flex-col text-center justify-center">
@@ -96,7 +96,7 @@ function Quiz() {
                   </motion.li>
                 ))
               ) : (
-                <ScaleLoader />
+                <Loading />
               )}
             </ul>
           </div>

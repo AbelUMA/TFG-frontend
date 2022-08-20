@@ -5,7 +5,7 @@ import Box from '../components/Box'
 import Modal from '../components/Modal'
 import { motion } from 'framer-motion'
 import axiosAPI from '../config/axiosAPI'
-import ScaleLoader from 'react-spinners/ScaleLoader'
+import Loading from '../components/Loading'
 import { AiOutlineQuestionCircle, AiOutlineReload } from 'react-icons/ai'
 import Popup from './Popup'
 
@@ -50,7 +50,7 @@ function DragAndDrop() {
   }, [])
 
   return loading ? (
-    <ScaleLoader className="mt-5 flex justify-center text-center" />
+    <Loading />
   ) : (
     <>
       <div className="top-0 right-0 text-3xl">

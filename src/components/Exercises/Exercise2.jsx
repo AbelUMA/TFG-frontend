@@ -2,18 +2,21 @@ import { React, useState, useEffect } from 'react'
 import axiosAPI from '../../config/axiosAPI'
 import { DragDropContainer, DropTarget } from 'react-drag-drop-container'
 import { motion, useAnimation } from 'framer-motion'
-import ScaleLoader from 'react-spinners/ScaleLoader'
+import Loading from '../Loading'
 
 function Exercise2() {
   const [score, setScore] = useState(0)
   const [fetchData, setFetchData] = useState([{}])
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     const getAlgorithmYourself = async () => {
       try {
+        setLoading(true)
         const url = '/algorithm-yourself'
         const { data } = await axiosAPI(url)
         setFetchData(data)
+        setLoading(false)
       } catch (error) {
         console.log(error)
       }
@@ -78,7 +81,9 @@ function Exercise2() {
     }
   }
 
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <>
       <div className="container mx-auto select-none overflow-hidden">
         <div className="mt-5 h-screen flex items-stretch select-none">
@@ -155,7 +160,7 @@ function Exercise2() {
                     </DragDropContainer>
                   ))
                 ) : (
-                  <ScaleLoader />
+                  <></>
                 )}
               </ul>
             </div>

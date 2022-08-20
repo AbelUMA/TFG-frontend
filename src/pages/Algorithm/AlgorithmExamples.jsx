@@ -1,8 +1,8 @@
 import { React, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import axiosAPI from '../../config/axiosAPI'
-import ScaleLoader from 'react-spinners/ScaleLoader'
 import { BsArrowDownCircle, BsArrowUpCircle } from 'react-icons/bs'
+import Loading from '../../components/Loading'
 
 function AlgorithmExamples() {
   const [loading, setLoading] = useState(false)
@@ -386,7 +386,7 @@ function AlgorithmExamples() {
   }, 200)
 
   return loading ? (
-    <ScaleLoader className="mt-5 flex justify-center text-center" />
+    <Loading />
   ) : (
     <div className="container mx-auto select-none overflow-hidden">
       <div className="mt-5 h-screen flex items-stretch select-none">

@@ -1,8 +1,8 @@
 import { React, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import axiosAPI from '../config/axiosAPI'
-import ScaleLoader from 'react-spinners/ScaleLoader'
 import { BsArrowRight } from 'react-icons/bs'
+import Loading from '../components/Loading'
 
 function BasicsOfProgramming() {
   const [loading, setLoading] = useState(false)
@@ -47,7 +47,7 @@ function BasicsOfProgramming() {
   }, [])
 
   return loading ? (
-    <ScaleLoader className="mt-5 flex justify-center text-center" />
+    <Loading />
   ) : (
     <div className="mt-5 flex items-stretch select-none">
       <div className="md:w-1/2 lg:w-1/2 mx-5">

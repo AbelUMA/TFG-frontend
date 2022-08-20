@@ -6,7 +6,6 @@ import {
   BsFillDoorOpenFill,
   BsFillKeyFill,
 } from 'react-icons/bs'
-import ScaleLoader from 'react-spinners/ScaleLoader'
 import Exercise1 from '../../components/Exercises/Exercise1.jsx'
 
 function AlgorithmYourself() {
@@ -65,8 +64,6 @@ function AlgorithmYourself() {
         </DropTarget>
       </div>
     </>
-  ) : loading ? (
-    <ScaleLoader />
   ) : (
     <Exercise1 />
   )

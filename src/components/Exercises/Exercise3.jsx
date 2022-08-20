@@ -2,18 +2,21 @@ import { React, useState, useEffect } from 'react'
 import axiosAPI from '../../config/axiosAPI'
 import { DragDropContainer, DropTarget } from 'react-drag-drop-container'
 import { motion, useAnimation } from 'framer-motion'
-import ScaleLoader from 'react-spinners/ScaleLoader'
+import Loading from '../Loading'
 
 function Exercise3() {
   const [score, setScore] = useState(0)
   const [fetchData, setFetchData] = useState([{}])
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     const getAlgorithmYourself = async () => {
       try {
+        setLoading(true)
         const url = '/algorithm-yourself'
         const { data } = await axiosAPI(url)
         setFetchData(data)
+        setLoading(false)
       } catch (error) {
         console.log(error)
       }
@@ -78,14 +81,16 @@ function Exercise3() {
     }
   }
 
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <>
       <div className="container mx-auto select-none overflow-hidden">
         <div className="mt-5 h-screen flex items-stretch select-none">
           <div className="relative h-4/5 lg:w-1/2 border-2 border-black rounded-md text-center w-full bg-gray-400 mx-2">
             <div className="mt-14 py-6 px-9 text-xl font-medium text-left w-full">
               <div className="flex flex-row">
-                <DropTarget dropData="FOR">
+                <DropTarget dropData="INT">
                   <div className="text-lg font-bold options justify-center items-center text-center inline-block box-content h-8 w-28 p-4 border-4 rounded-md border-dashed"></div>
                 </DropTarget>
                 <div className="ml-6 mt-4">
@@ -113,7 +118,7 @@ function Exercise3() {
               <div className="mt-5">&#123;</div>
               <div className="flex flex-row mt-5">
                 <span className="text-[#ac38a3] mr-6 mt-4">int</span>{' '}
-                <DropTarget dropData="COUNT">
+                <DropTarget dropData="RESULT">
                   <div className="text-lg font-bold options justify-center items-center text-center  inline-block box-content h-8 w-28 p-4 border-4 rounded-md border-dashed"></div>
                 </DropTarget>
                 <span className="ml-6 mt-4">
@@ -132,7 +137,7 @@ function Exercise3() {
             <div className="h-1/3 flex text-center justify-center items-center mx-2">
               <motion.a
                 id="next-button"
-                href="http://localhost:3000/algorithm/yourself/3"
+                href="http://localhost:3000/algorithm/yourself/4"
                 variants={variantsButton}
                 animate={buttonControls}
                 whileTap={{ scale: 0.9 }}
@@ -158,7 +163,7 @@ function Exercise3() {
                     </DragDropContainer>
                   ))
                 ) : (
-                  <ScaleLoader />
+                  <></>
                 )}
               </ul>
             </div>
