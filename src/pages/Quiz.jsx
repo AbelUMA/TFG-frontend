@@ -28,7 +28,6 @@ function Quiz() {
   }, [])
 
   const optionClicked = (e, isCorrect) => {
-    console.log(typeof isCorrect)
     if (currentQuestion + 1 === questions.length) {
       setShowFinalResults(true)
     }

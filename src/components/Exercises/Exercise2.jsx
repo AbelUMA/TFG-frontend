@@ -1,10 +1,27 @@
 import { React, useState, useEffect } from 'react'
+import axiosAPI from '../../config/axiosAPI'
 import { DragDropContainer, DropTarget } from 'react-drag-drop-container'
 import { motion, useAnimation } from 'framer-motion'
 import ScaleLoader from 'react-spinners/ScaleLoader'
-import { algorithmYourself } from '../../data/algorithmYourself.js'
 
-function Exercise2({ fetchData }) {
+function Exercise2() {
+  const [score, setScore] = useState(0)
+  const [fetchData, setFetchData] = useState([{}])
+
+  useEffect(() => {
+    const getAlgorithmYourself = async () => {
+      try {
+        const url = '/algorithm-yourself'
+        const { data } = await axiosAPI(url)
+        setFetchData(data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    getAlgorithmYourself()
+  }, [])
+
   const controls = useAnimation()
   const buttonControls = useAnimation()
 
@@ -39,8 +56,6 @@ function Exercise2({ fetchData }) {
       rotate: 0,
     },
   }
-
-  const [score, setScore] = useState(0)
 
   const handleDropExercise = (e) => {
     if (e.dragData === e.dropData) {
@@ -124,7 +139,7 @@ function Exercise2({ fetchData }) {
             </div>
             <div className="h-2/5 text-justify justify-center items-center mx-2 mt-16 bg-gray-900 p-4 border-2 border-black rounded-md">
               <ul className="grid grid-cols-3 gap-4 mx-10 content-center h-full">
-                {fetchData ? (
+                {fetchData[1] ? (
                   fetchData[1].options.map((option) => (
                     <DragDropContainer
                       key={option.id}

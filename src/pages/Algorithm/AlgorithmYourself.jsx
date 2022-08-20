@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from 'react'
+import axiosAPI from '../../config/axiosAPI'
 import { DragDropContainer, DropTarget } from 'react-drag-drop-container'
 import { motion, useAnimation } from 'framer-motion'
 import {
@@ -19,7 +20,19 @@ function AlgorithmYourself() {
   const [isStartGame, setIsStartGame] = useState(false)
 
   useEffect(() => {
-    setFetchData(algorithmYourself)
+    const getAlgorithmYourself = async () => {
+      try {
+        setLoading(true)
+        const url = '/algorithm-yourself'
+        const { data } = await axiosAPI(url)
+        setFetchData(data)
+        setLoading(false)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    getAlgorithmYourself()
   }, [])
 
   const handleDrop = (e) => {
@@ -71,8 +84,10 @@ function AlgorithmYourself() {
         </DropTarget>
       </div>
     </>
+  ) : loading ? (
+    <ScaleLoader />
   ) : (
-    <Exercise1 fetchData={fetchData} />
+    <Exercise1 />
   )
 }
 

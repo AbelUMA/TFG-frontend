@@ -4,7 +4,7 @@ import { DragDropContainer, DropTarget } from 'react-drag-drop-container'
 import { motion, useAnimation } from 'framer-motion'
 import ScaleLoader from 'react-spinners/ScaleLoader'
 
-function Exercise1() {
+function Exercise4() {
   const [score, setScore] = useState(0)
   const [fetchData, setFetchData] = useState([{}])
 
@@ -71,6 +71,7 @@ function Exercise1() {
         const nextButton = document.getElementById('next-button')
         nextButton.classList.remove('opacity-50')
         nextButton.classList.remove('pointer-events-none')
+        nextButton.classList.remove('invisible')
         buttonControls.start('start')
       }
     } else {
@@ -82,36 +83,62 @@ function Exercise1() {
     <div className="container mx-auto select-none overflow-hidden">
       <div className="mt-5 h-screen flex items-stretch select-none">
         <div className="relative h-4/5 lg:w-1/2 border-2 border-black rounded-md text-center w-full bg-gray-400 mx-2">
-          <div className="mt-14 py-6 px-9 text-xl font-medium text-left w-full">
+          <div className="mt-6 py-6 px-9 text-xl font-medium text-left w-full">
             <div className="flex flex-row">
-              <DropTarget dropData="VAR">
-                <div className="text-lg font-bold justify-center items-center text-center inline-block box-content h-8 w-28 p-4 border-4 rounded-md border-dashed"></div>
-              </DropTarget>
-              <div className="indent-8 mt-4">
-                <span className="text-[#bd3939]">count</span> = 1;
-              </div>
-            </div>
-            <div className="flex flex-row mt-20">
-              <DropTarget dropData="FUNCTION">
-                <div className="text-lg font-bold  justify-center items-center text-center inline-block box-content h-8 w-28 p-4 border-4 rounded-md border-dashed"></div>
-              </DropTarget>
-              <div className="indent-8 mt-4">
-                <span className="text-[#197eca]">addCount</span>(
-                <span className="text-[#bd3939]">count</span>) &#123;
-              </div>
-            </div>
-            <div className="mt-10">
-              <div className="indent-8 mt-4">
-                <span className="text-[#bd3939]">count</span> ={' '}
-                <span className="text-[#bd3939]">count</span> + 1;
-              </div>
-              <div className="mt-5">&#125;</div>
-            </div>
-            <div className="flex flex-row mt-20">
-              <DropTarget dropData="RETURN">
+              <DropTarget dropData="INT">
                 <div className="text-lg font-bold  justify-center items-center text-center  inline-block box-content h-8 w-28 p-4 border-4 rounded-md border-dashed"></div>
               </DropTarget>
               <div className="indent-8 mt-4 text-[#bd3939]">count;</div>
+            </div>
+            <div className="flex flex-row mt-10">
+              <DropTarget dropData="SWITCH">
+                <div className="text-lg font-bold  justify-center items-center text-center inline-block box-content h-8 w-28 p-4 border-4 rounded-md border-dashed"></div>
+              </DropTarget>
+              <div className="indent-8 mt-4">
+                (<span className="text-[#bd3939]">count</span>) &#123;
+              </div>
+            </div>
+            <div className="mt-6">
+              <div className="indent-8 mt-4">
+                <span className="text-[#ac38a3]">case</span>{' '}
+                <span className="text-[#bd3939]">1</span>:
+              </div>
+              <div className="indent-12 mt-4">
+                <span className="text-[#ac38a3]">int</span>{' '}
+                <span className="text-[#bd3939]">num</span> = 10;
+              </div>
+              <div className="indent-12">
+                <span className="text-[#ac38a3]">break</span>;
+              </div>
+            </div>
+            <div className="mt-6">
+              <div className="indent-8 mt-4">
+                <span className="text-[#ac38a3]">case</span>{' '}
+                <span className="text-[#bd3939]">5</span>:
+              </div>
+              <div className="indent-12 mt-4">
+                <span className="text-[#ac38a3]">int</span>{' '}
+                <span className="text-[#bd3939]">num</span> = 5;
+              </div>
+              <div className="indent-12">
+                <span className="text-[#ac38a3]">break</span>;
+              </div>
+            </div>
+            <div className="mt-6">
+              <div className="flex flex-row">
+                <DropTarget dropData="DEFAULT">
+                  <div className="text-lg font-bold  justify-center items-center text-center  inline-block box-content h-8 w-28 p-4 border-4 rounded-md border-dashed"></div>
+                </DropTarget>
+                <div className="indent-4 mt-4">:</div>
+              </div>
+              <div className="indent-12 mt-4">
+                <span className="text-[#ac38a3]">int</span>{' '}
+                <span className="text-[#bd3939]">num</span> = 1;
+              </div>
+              <div className="indent-12">
+                <span className="text-[#ac38a3]">break</span>;
+              </div>
+              <div className="mt-5">&#125;</div>
             </div>
           </div>
         </div>
@@ -119,18 +146,18 @@ function Exercise1() {
           <div className="h-1/3 flex text-center justify-center items-center mx-2">
             <motion.a
               id="next-button"
-              href="http://localhost:3000/algorithm/yourself/2"
+              href="http://localhost:3000/algorithm/yourself"
               variants={variantsButton}
               animate={buttonControls}
               whileTap={{ scale: 0.9 }}
-              className="text-4xl border-black border-2 rounded-full py-2 px-4 opacity-50 pointer-events-none">
-              <p>Next</p>
+              className="invisible text-2xl bg-principiaOrange rounded-full py-2 px-4 opacity-50 pointer-events-none">
+              <p>Reiniciar</p>
             </motion.a>
           </div>
           <div className="h-2/5 text-justify justify-center items-center mx-2 mt-16 bg-gray-900 p-4 border-2 border-black rounded-md">
             <ul className="grid grid-cols-3 gap-4 mx-10 content-center h-full">
-              {fetchData[0].options ? (
-                fetchData[0].options.map((option) => (
+              {fetchData[3] ? (
+                fetchData[3].options.map((option) => (
                   <DragDropContainer
                     key={option.id}
                     dragData={option.text}
@@ -155,4 +182,4 @@ function Exercise1() {
   )
 }
 
-export default Exercise1
+export default Exercise4
