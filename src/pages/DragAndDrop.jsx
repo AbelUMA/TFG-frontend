@@ -1,24 +1,57 @@
-import { React, useState } from 'react'
-import { initialCards } from '../data/cards'
-import { initialBoxes } from '../data/boxes'
+import { React, useState, useEffect } from 'react'
+
 import Card from '../components/Card'
 import Box from '../components/Box'
 import Modal from '../components/Modal'
 import { motion } from 'framer-motion'
+import axiosAPI from '../config/axiosAPI'
+import ScaleLoader from 'react-spinners/ScaleLoader'
 import { AiOutlineQuestionCircle, AiOutlineReload } from 'react-icons/ai'
 import Popup from './Popup'
 
 function DragAndDrop() {
-  const shuffleCards = initialCards.sort(() => Math.random() - 0.5)
-  const shuffleBoxes = initialBoxes.sort(() => Math.random() - 0.5)
+  const [loading, setLoading] = useState(false)
 
-  const [cards, setCards] = useState(shuffleCards)
-  const [boxes, setBoxes] = useState(shuffleBoxes)
+  const [cards, setCards] = useState([{}])
+  const [boxes, setBoxes] = useState([{}])
 
   const [isOpenModal, setIsOpenModal] = useState(false)
   const [isOpenPopup, setIsOpenPopup] = useState(false)
 
-  return (
+  useEffect(() => {
+    const getCards = async () => {
+      try {
+        setLoading(true)
+        const url = '/cards'
+        const { data } = await axiosAPI(url)
+        data.sort(() => 0.5 - Math.random())
+        setCards(data)
+        setLoading(false)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    const getBoxes = async () => {
+      try {
+        setLoading(true)
+        const url = '/boxes'
+        const { data } = await axiosAPI(url)
+        data.sort(() => 0.5 - Math.random())
+        setBoxes(data)
+        setLoading(false)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    getCards()
+    getBoxes()
+  }, [])
+
+  return loading ? (
+    <ScaleLoader className="mt-5 flex justify-center text-center" />
+  ) : (
     <>
       <div className="top-0 right-0 text-3xl">
         <motion.button

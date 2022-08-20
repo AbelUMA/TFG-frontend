@@ -1,5 +1,4 @@
-import { React, useState, useEffect } from 'react'
-import axiosAPI from '../../config/axiosAPI'
+import { React, useState } from 'react'
 import { DragDropContainer, DropTarget } from 'react-drag-drop-container'
 import { motion, useAnimation } from 'framer-motion'
 import {
@@ -8,32 +7,14 @@ import {
   BsFillKeyFill,
 } from 'react-icons/bs'
 import ScaleLoader from 'react-spinners/ScaleLoader'
-import { algorithmYourself } from '../../data/algorithmYourself.js'
 import Exercise1 from '../../components/Exercises/Exercise1.jsx'
 
 function AlgorithmYourself() {
   const controls = useAnimation()
 
-  const [fetchData, setFetchData] = useState([{}])
   const [loading, setLoading] = useState(false)
   const [isOpenDoor, setIsOpenDoor] = useState(false)
   const [isStartGame, setIsStartGame] = useState(false)
-
-  useEffect(() => {
-    const getAlgorithmYourself = async () => {
-      try {
-        setLoading(true)
-        const url = '/algorithm-yourself'
-        const { data } = await axiosAPI(url)
-        setFetchData(data)
-        setLoading(false)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-
-    getAlgorithmYourself()
-  }, [])
 
   const handleDrop = (e) => {
     controls.start('open')
