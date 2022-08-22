@@ -1,6 +1,7 @@
 import { React } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout from './layout/Layout'
+import LayoutHome from './layout/LayoutHome'
 import Welcome from './pages/Welcome'
 import DragAndDrop from './pages/DragAndDrop'
 import Information from './pages/Information'
@@ -16,13 +17,16 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route element={<LayoutHome />}>
+          <Route path="/home" element={<Home />} />
+        </Route>
         <Route index element={<Welcome />} />
         <Route path="/" element={<Layout />}>
           <Route
             path="/basics-of-programming"
             element={<BasicsOfProgramming />}
           />
-          <Route path="/home" element={<Home />} />
+
           <Route path="/drag-and-drop" element={<DragAndDrop />} />
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/algorithm" element={<Algorithm />} />

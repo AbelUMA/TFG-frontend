@@ -116,7 +116,7 @@ function Sidebar() {
       </div>
     </>
   ) : (
-    <div className="text-2xl before:absolute p-4">
+    <div className="text-2xl before:absolute p-4 bg-[#3F0E40] text-white">
       <button onClick={() => setIsOpen((isOpen) => !isOpen)}>
         <BsList />
       </button>
