@@ -7,6 +7,7 @@ import { BsList } from 'react-icons/bs'
 import { VscChromeClose } from 'react-icons/vsc'
 import { motion } from 'framer-motion'
 import { sidebarMenu } from '../data/menu'
+import { useEffect } from 'react'
 
 function Sidebar() {
   const showSubMenu = {
@@ -36,7 +37,7 @@ function Sidebar() {
 
   return isOpen ? (
     <>
-      <div className="flex flex-col w-72 h-screen bg-[#3F0E40] px-4 py-2 overflow-y-auto border-r">
+      <div className="flex flex-col w-72 h-screen bg-[#3F0E40] px-4 py-2 overflow-y-auto">
         <div className="before:bg-[#979797] text-2xl -mx-4 -my-2 before:absolute p-4">
           <button onClick={() => setIsOpen((isOpen) => !isOpen)}>
             <VscChromeClose className="text-white" />

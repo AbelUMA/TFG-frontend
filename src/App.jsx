@@ -1,11 +1,12 @@
 import { React } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout from './layout/Layout'
-import LayoutHome from './layout/LayoutHome'
+import LayoutPresentation from './layout/LayoutPresentation'
 import Welcome from './pages/Welcome'
 import DragAndDrop from './pages/DragAndDrop'
 import Information from './pages/Information'
 import Home from './pages/Home'
+import Presentation from './pages/Presentation'
 import Algorithm from './pages/Algorithm/Algorithm'
 import BasicsOfProgramming from './pages/BasicsOfProgramming'
 import Quiz from './pages/Quiz'
@@ -17,11 +18,12 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<LayoutHome />}>
-          <Route path="/home" element={<Home />} />
+        <Route element={<LayoutPresentation />}>
+          <Route path="/presentation" element={<Presentation />} />
         </Route>
         <Route index element={<Welcome />} />
         <Route path="/" element={<Layout />}>
+          <Route path="/home" element={<Home />} />
           <Route
             path="/basics-of-programming"
             element={<BasicsOfProgramming />}

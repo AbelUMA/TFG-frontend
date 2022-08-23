@@ -3,12 +3,12 @@ import { Outlet } from 'react-router-dom'
 
 import Sidebar from '../components/Sidebar'
 
-function Layout() {
+function LayoutPresentation() {
   return (
     <>
       <div className="md:flex md:min-h-screen ">
         <Sidebar />
-        <div className="md:w-full md:h-screen overflow-y-auto">
+        <div className="md:w-full p-10 md:h-screen overflow-y-auto">
           <Outlet />
         </div>
       </div>
@@ -16,4 +16,4 @@ function Layout() {
   )
 }
 
-export default Layout
+export default LayoutPresentation

@@ -1,5 +1,9 @@
 import { CgGames } from 'react-icons/cg'
-import { AiOutlineHome, AiOutlineInfoCircle } from 'react-icons/ai'
+import {
+  AiOutlineHome,
+  AiOutlineInfoCircle,
+  AiOutlineUser,
+} from 'react-icons/ai'
 import { BiBrain } from 'react-icons/bi'
 
 export const sidebarMenu = [
@@ -48,6 +52,13 @@ export const sidebarMenu = [
     title: 'Información',
     url: '/info',
     icon: <AiOutlineInfoCircle />,
+    submenu: '',
+  },
+  {
+    id: 8,
+    title: 'Conóceme',
+    url: '/presentation',
+    icon: <AiOutlineUser />,
     submenu: '',
   },
 ]
