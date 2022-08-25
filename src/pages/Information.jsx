@@ -2,7 +2,7 @@ import React from 'react'
 
 function Information() {
   return (
-    <div className="mt-5 flex items-stretch select-none">
+    <div className="mt-5 flex items-stretch  ">
       <div className="md:w-full lg:w-full mx-5">
         <h2 className="font-black text-5xl text-center bg-clip-text text-transparent bg-gradient-to-r from-principiaBlue to-principiaPurple py-3">
           ¿Cuál es el objetivo de esta aplicación?

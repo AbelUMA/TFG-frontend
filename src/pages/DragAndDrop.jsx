@@ -68,7 +68,7 @@ function DragAndDrop() {
         </motion.button>
       </div>
       <>
-        <div className="container mx-auto mt-20 select-none overflow-hidden">
+        <div className="container mx-auto mt-20 overflow-hidden">
           <h1 className="font-black text-5xl text-center md:w-2/3 mx-auto mb-10">
             <span className="text-principiaOrange">Arrastra y suelta</span> las
             tarjetas en los correspondientes{' '}
@@ -76,7 +76,7 @@ function DragAndDrop() {
           </h1>
         </div>
 
-        <div className="mt-20 flex items-stretch select-none">
+        <div className="mt-20 flex items-stretch ">
           <Card targetKey="card" cards={cards}></Card>
           <Box
             targetKey="card"

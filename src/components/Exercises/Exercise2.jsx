@@ -85,8 +85,8 @@ function Exercise2() {
     <Loading />
   ) : (
     <>
-      <div className="container mx-auto select-none overflow-hidden">
-        <div className="mt-5 h-screen flex items-stretch select-none">
+      <div className="container mx-auto   overflow-hidden">
+        <div className="mt-5 h-screen flex items-stretch  ">
           <div className="relative h-4/5 lg:w-1/2 border-2 border-black rounded-md text-center w-full bg-gray-400 mx-2">
             <div className="mt-14 py-6 px-9 text-xl font-medium text-left w-full">
               <div className="flex flex-row">

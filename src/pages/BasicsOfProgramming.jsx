@@ -49,7 +49,7 @@ function BasicsOfProgramming() {
   return loading ? (
     <Loading />
   ) : (
-    <div className="mt-5 flex items-stretch select-none">
+    <div className="mt-5 flex items-stretch  ">
       <div className="md:w-1/2 lg:w-1/2 mx-5">
         <h2 className="font-black text-3xl text-center">
           Conceptos básicos sobre la programación

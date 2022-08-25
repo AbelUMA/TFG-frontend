@@ -10,7 +10,7 @@ import { sidebarMenu } from '../data/menu'
 import { useEffect } from 'react'
 import { bake_cookie, read_cookie, delete_cookie } from 'sfcookies'
 
-function Sidebar() {
+function SidebarPresentation() {
   const cookieSubmenu = 'isSubmenuOpen'
 
   const showSubMenu = {
@@ -47,8 +47,8 @@ function Sidebar() {
 
   return isOpen ? (
     <>
-      <div className="flex flex-col w-72 bg-[#3F0E40] mt-32 mb-32 px-2 py-4 overflow-y-auto m-auto rounded-tr-full rounded-br-full">
-        <h2 className="text-3xl font-semibold text-white p-6 mt-8">Menu</h2>
+      <div className="flex flex-col w-72 bg-[#3F0E40] px-2 py-4 overflow-y-auto">
+        <h2 className="text-3xl font-semibold text-white p-6 mt-40">Menu</h2>
 
         <div className="flex flex-col justify-between mt-16">
           <aside>
@@ -130,4 +130,4 @@ function Sidebar() {
   )
 }
 
-export default Sidebar
+export default SidebarPresentation

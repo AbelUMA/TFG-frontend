@@ -64,7 +64,7 @@ function Presentation() {
             </p>
             <p className="m-20">
               <img
-                className="rounded-full border-2 border-black select-none"
+                className="rounded-full border-2 border-black  "
                 src={personalPhoto}
                 alt="Abel Galvan"
               />

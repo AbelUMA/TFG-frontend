@@ -28,10 +28,6 @@ function Quiz() {
   }, [])
 
   const optionClicked = (e, isCorrect) => {
-    if (currentQuestion + 1 === questions.length) {
-      setShowFinalResults(true)
-    }
-
     const options = document.querySelectorAll('.options')
 
     options.forEach((option) => {
@@ -47,7 +43,7 @@ function Quiz() {
     }
 
     setTimeout(() => {
-      if (currentQuestion + 1 <= questions.length) {
+      if (currentQuestion + 1 < questions.length) {
         e.target.style.backgroundColor = ''
         setCurrentQuestion(currentQuestion + 1)
       } else {

@@ -8,7 +8,7 @@ function Layout() {
     <>
       <div className="md:flex md:min-h-screen ">
         <Sidebar />
-        <div className="md:w-full p-10 md:h-screen overflow-hidden">
+        <div className="md:w-full m-auto p-10 md:h-screen overflow-hidden">
           <Outlet />
         </div>
       </div>

@@ -18,11 +18,11 @@ function Algorithm() {
   const MotionLink = motion(Link)
 
   return (
-    <div className="container mx-auto select-none overflow-hidden">
+    <div className="container mx-auto   overflow-hidden">
       <h1 className="font-black text-5xl text-center md:w-2/3 mx-auto mb-10">
         Algoritmos y Programación
       </h1>
-      <div className="mt-20 h-screen flex items-stretch select-none">
+      <div className="mt-20 h-screen flex items-stretch  ">
         <MotionLink
           to={'/algorithm/yourself'}
           whileTap={{ scale: 0.9 }}
