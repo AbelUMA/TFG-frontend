@@ -35,9 +35,9 @@ function Presentation() {
           </motion.div>
         </header>
         <div id="welcome" className="flex text-center">
-          <div className="max-w-xl mx-auto mt-10">
+          <div className="max-w-xl mx-auto mt-10 text-2xl">
             <p className="mb-8">
-              <span className="font-semibold text-3xl">¡BIENVENIDO/A!</span>
+              <span className="font-semibold text-4xl">¡BIENVENIDO/A!</span>
             </p>
             <p className="mb-4">
               <span className="font-semibold">
