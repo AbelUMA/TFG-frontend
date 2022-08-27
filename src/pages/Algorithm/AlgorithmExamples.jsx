@@ -434,7 +434,8 @@ function AlgorithmExamples() {
             <div
               dangerouslySetInnerHTML={{
                 __html: examples[currentExample].debuggerContent,
-              }}></div>
+              }}
+              className="ml-5"></div>
           </div>
           <div
             className="h-2/5 text-justify justify-center items-center mx-2 mt-16 bg-gray-400 p-4 border-2 border-black rounded-md"

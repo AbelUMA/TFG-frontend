@@ -1,17 +1,42 @@
 /* eslint-disable no-unused-vars */
 import { React, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion'
+import { bake_cookie, read_cookie, delete_cookie } from 'sfcookies'
+import { AiOutlineRight, AiOutlineLeft } from 'react-icons/ai'
 import { BsChevronUp } from 'react-icons/bs'
 import { BsChevronDown } from 'react-icons/bs'
 import { BsList } from 'react-icons/bs'
 import { VscChromeClose } from 'react-icons/vsc'
-import { motion } from 'framer-motion'
+import { IoChevronForwardCircleOutline } from 'react-icons/io5'
 import { sidebarMenu } from '../data/menu'
 import { useEffect } from 'react'
-import { bake_cookie, read_cookie, delete_cookie } from 'sfcookies'
 
 function SidebarPresentation() {
+  const cookieMenu = 'isMenuOpen'
   const cookieSubmenu = 'isSubmenuOpen'
+
+  const sideVariants = {
+    closed: {
+      transition: {
+        staggerChildren: 0.2,
+        staggerDirection: -1,
+      },
+    },
+    open: {
+      transition: {
+        staggerChildren: 0.2,
+        staggerDirection: 1,
+      },
+    },
+  }
+
+  const itemVariants = {
+    closed: {
+      opacity: 0,
+    },
+    open: { opacity: 1 },
+  }
 
   const showSubMenu = {
     enter: {
@@ -35,98 +60,131 @@ function SidebarPresentation() {
 
   const currentURL = '/' + location.pathname.split('/')[1]
 
-  const [isOpen, setIsOpen] = useState(true)
+  const [menuOpen, setMenuOpen] = useState(
+    read_cookie(cookieMenu) ? read_cookie(cookieMenu) : false
+  )
   const [submenuOpen, setSubmenuOpen] = useState(
     read_cookie(cookieSubmenu) ? read_cookie(cookieSubmenu) : false
   )
+
+  const handleMenu = (menu) => {
+    setMenuOpen(menu)
+    bake_cookie(cookieMenu, menu)
+  }
 
   const handleSubmenu = (submenu) => {
     setSubmenuOpen(submenu)
     bake_cookie(cookieSubmenu, submenu)
   }
 
-  return isOpen ? (
-    <>
-      <div className="flex flex-col w-72 bg-[#3F0E40] px-2 py-4 overflow-y-auto">
-        <h2 className="text-3xl font-semibold text-white p-6 mt-40">Menu</h2>
-
-        <div className="flex flex-col justify-between mt-16">
-          <aside>
-            <ul>
-              {sidebarMenu.map((menu) => {
-                if (menu.submenu.length === 0) {
-                  return (
-                    <li key={menu.id}>
-                      <Link
-                        className={`${
-                          currentURL === menu.url ? 'bg-[#1264A3]' : ''
-                        } flex items-center px-4 w-full py-2 mt-5 text-white rounded-md `}
-                        to={menu.url}>
-                        <div className="text-2xl">{menu.icon}</div>
-                        <span className="mx-4 font-medium">{menu.title}</span>
-                      </Link>
-                    </li>
-                  )
-                } else {
-                  return (
-                    <>
-                      <li key={menu.id}>
-                        <Link
-                          className={`${
-                            currentURL === menu.url ? 'bg-[#1264A3]' : ''
-                          } flex items-center w-full px-4 py-2 mt-5 text-white rounded-md `}
-                          to={menu.url}
-                          onClick={() => handleSubmenu(!submenuOpen)}>
-                          <div className="text-2xl">{menu.icon}</div>
-                          <span className="mx-4 font-medium">{menu.title}</span>
-                          {submenuOpen ? (
-                            <BsChevronUp className="ml-16" />
-                          ) : (
-                            <BsChevronDown className="ml-16" />
+  return (
+    <AnimatePresence>
+      {menuOpen && (
+        <>
+          <motion.div
+            className="flex flex-col w-72 bg-[#3F0E40] mt-32 mb-32 px-2 py-4 overflow-y-auto m-auto rounded-tr-full rounded-br-full "
+            initial={{ width: 0 }}
+            animate={{
+              width: 288,
+            }}
+            exit={{
+              width: 0,
+              transition: { delay: 0.7, duration: 0.3 },
+            }}>
+            <h2 className="text-3xl font-semibold text-white p-6 mt-8">Menu</h2>
+            <motion.div
+              className="flex flex-col justify-between mt-16"
+              variants={sideVariants}
+              initial="closed"
+              animate="open"
+              exit="closed">
+              <aside>
+                <ul>
+                  {sidebarMenu.map((menu) => {
+                    if (menu.submenu.length === 0) {
+                      return (
+                        <motion.li variants={itemVariants} key={menu.id}>
+                          <Link
+                            className={`${
+                              currentURL === menu.url ? 'bg-[#1264A3]' : ''
+                            } flex items-center px-4 w-full py-2 mt-5 text-white rounded-md `}
+                            to={menu.url}>
+                            <div className="text-2xl">{menu.icon}</div>
+                            <span className="mx-4 font-medium">
+                              {menu.title}
+                            </span>
+                          </Link>
+                        </motion.li>
+                      )
+                    } else {
+                      return (
+                        <>
+                          <motion.li variants={itemVariants} key={menu.id}>
+                            <Link
+                              className={`${
+                                currentURL === menu.url ? 'bg-[#1264A3]' : ''
+                              } flex items-center w-full px-4 py-2 mt-5 text-white rounded-md `}
+                              to={menu.url}
+                              onClick={() => handleSubmenu(!submenuOpen)}>
+                              <div className="text-2xl">{menu.icon}</div>
+                              <span className="mx-4 font-medium">
+                                {menu.title}
+                              </span>
+                              {submenuOpen ? (
+                                <BsChevronUp className="ml-16" />
+                              ) : (
+                                <BsChevronDown className="ml-16" />
+                              )}
+                            </Link>
+                          </motion.li>
+                          {submenuOpen && (
+                            <motion.ul
+                              className="list-disc"
+                              variants={showSubMenu}
+                              initial="exit"
+                              animate={submenuOpen ? 'enter' : 'exit'}>
+                              {menu.submenu.map((submenu) => (
+                                <li
+                                  key={menu.id}
+                                  className="ml-16 mt-5 text-white">
+                                  <Link
+                                    to={submenu.url}
+                                    className={`${
+                                      currentURL === submenu.url
+                                        ? 'bg-[#1264A3]'
+                                        : ''
+                                    } rounded-md px-1 py-1`}>
+                                    <span
+                                      className={
+                                        'rounded-md py-1 font-medium text-sm'
+                                      }>
+                                      {submenu.title}
+                                    </span>
+                                  </Link>
+                                </li>
+                              ))}
+                            </motion.ul>
                           )}
-                        </Link>
-                      </li>
-                      {submenuOpen && (
-                        <motion.ul
-                          className="list-disc"
-                          variants={showSubMenu}
-                          initial="exit"
-                          animate={submenuOpen ? 'enter' : 'exit'}>
-                          {menu.submenu.map((submenu) => (
-                            <li key={menu.id} className="ml-16 mt-5 text-white">
-                              <Link
-                                to={submenu.url}
-                                className={`${
-                                  currentURL === submenu.url
-                                    ? 'bg-[#1264A3]'
-                                    : ''
-                                } rounded-md px-1 py-1`}>
-                                <span
-                                  className={
-                                    'rounded-md py-1 font-medium text-sm'
-                                  }>
-                                  {submenu.title}
-                                </span>
-                              </Link>
-                            </li>
-                          ))}
-                        </motion.ul>
-                      )}
-                    </>
-                  )
-                }
-              })}
-            </ul>
-          </aside>
+                        </>
+                      )
+                    }
+                  })}
+                </ul>
+              </aside>
+            </motion.div>
+          </motion.div>
+        </>
+      )}
+      <div className="relative">
+        <div className="absolute z-10 top-0 right-0 bottom-0 mt-[26rem] -mr-8">
+          <div
+            className="font-bold text-white rounded-tr-full rounded-br-full bg-[#3F0E40] flex text-4xl items-center justify-end h-20 hover:cursor-pointer"
+            onClick={() => handleMenu(!menuOpen)}>
+            {menuOpen ? <AiOutlineLeft /> : <AiOutlineRight />}
+          </div>
         </div>
       </div>
-    </>
-  ) : (
-    <div className="text-2xl before:absolute p-4 bg-[#3F0E40] text-white">
-      <button onClick={() => setIsOpen((isOpen) => !isOpen)}>
-        <BsList />
-      </button>
-    </div>
+    </AnimatePresence>
   )
 }
 

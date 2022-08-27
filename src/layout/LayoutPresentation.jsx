@@ -6,9 +6,10 @@ import SidebarPresentation from '../components/SidebarPresentation'
 function LayoutPresentation() {
   return (
     <>
-      <div className="md:flex md:min-h-screen">
+      <div className="flex">
         <SidebarPresentation />
-        <div className="md:w-full p-10 md:h-screen overflow-y-auto">
+
+        <div className="w-full p-10 h-screen overflow-y-auto ">
           <Outlet />
         </div>
       </div>
