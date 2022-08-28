@@ -1,7 +1,6 @@
 import { React } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout from './layout/Layout'
-import LayoutPresentation from './layout/LayoutPresentation'
 import Welcome from './pages/Welcome'
 import DragAndDrop from './pages/DragAndDrop'
 import Information from './pages/Information'
@@ -18,7 +17,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<LayoutPresentation />}>
+        <Route element={<Layout presentation={true} />}>
           <Route path="/presentation" element={<Presentation />} />
         </Route>
         <Route index element={<Welcome />} />
