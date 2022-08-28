@@ -1,16 +1,10 @@
-/* eslint-disable no-unused-vars */
 import { React, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { bake_cookie, read_cookie, delete_cookie } from 'sfcookies'
+import { bake_cookie, read_cookie } from 'sfcookies'
 import { AiOutlineRight, AiOutlineLeft } from 'react-icons/ai'
-import { BsChevronUp } from 'react-icons/bs'
-import { BsChevronDown } from 'react-icons/bs'
-import { BsList } from 'react-icons/bs'
-import { VscChromeClose } from 'react-icons/vsc'
-import { IoChevronForwardCircleOutline } from 'react-icons/io5'
+import { BsChevronUp, BsChevronDown } from 'react-icons/bs'
 import { sidebarMenu } from '../data/menu'
-import { useEffect } from 'react'
 
 function Sidebar() {
   const cookieMenu = 'isMenuOpen'
@@ -82,7 +76,7 @@ function Sidebar() {
       {menuOpen && (
         <>
           <motion.div
-            className="flex flex-col w-72 bg-[#3F0E40] mt-32 mb-32 px-2 py-4 overflow-y-auto m-auto rounded-tr-full rounded-br-full z-0"
+            className="flex flex-col w-72 bg-[#3F0E40] mt-32 mb-32 m-auto px-2 py-4 overflow-y-auto  rounded-tr-full rounded-br-full z-0"
             initial={{ width: 0 }}
             animate={{
               width: 288,
@@ -93,7 +87,7 @@ function Sidebar() {
             }}>
             <h2 className="text-3xl font-semibold text-white p-6 mt-8">Menu</h2>
             <motion.div
-              className="flex flex-col justify-between mt-16"
+              className="flex flex-col justify-between mt-4"
               variants={sideVariants}
               initial="closed"
               animate="open"
@@ -145,9 +139,10 @@ function Sidebar() {
                               animate={submenuOpen ? 'enter' : 'exit'}>
                               {menu.submenu.map((submenu) => (
                                 <li
-                                  key={menu.id}
-                                  className="ml-16 mt-5 text-white">
+                                  className="ml-16 mt-5 text-white"
+                                  key={submenu.id}>
                                   <Link
+                                    key={submenu.id}
                                     to={submenu.url}
                                     className={`${
                                       currentURL === submenu.url

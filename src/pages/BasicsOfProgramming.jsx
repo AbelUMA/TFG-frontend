@@ -85,7 +85,7 @@ function BasicsOfProgramming() {
         </p>
         <div
           id={'content-' + content.id}
-          className="container mt-16 mx-auto font-semibold text-xl flex-col text-center justify-center items-center w-2/3 leading-10"
+          className="container mt-16 mx-auto font-semibold text-xl flex-col text-left justify-center items-center w-2/3 leading-10"
           dangerouslySetInnerHTML={{ __html: content.text }}></div>
         {isFirst ? (
           ''
@@ -108,7 +108,7 @@ function BasicsOfProgramming() {
               className="cursor-pointer"
               whileTap={{ scale: 0.9 }}
               onClick={() => handleCloseExample(content.id)}>
-              Cerrar
+              {content.extra ? 'Cerrar' : ''}
             </motion.span>
           </div>
         )}
