@@ -1,84 +1,66 @@
-import React from 'react'
+import { React } from 'react'
 import YoutubeEmbed from '../components/YoutubeEmbed'
 
-function Tabs() {
-  const [openTab, setOpenTab] = React.useState(1)
+function Tabs({ openTab, setOpenTab }) {
   return (
     <>
       <div className="flex flex-wrap">
         <div className="w-full">
           <ul className="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
-            <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
+            <li className="mr-2 last:mr-0 flex-auto text-center">
               <a
                 className={
-                  'text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal ' +
-                  (openTab === 1 ? 'text-white' : 'bg-white')
+                  'text-md font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal ' +
+                  (openTab === 0 ? 'bg-principiaBlue' : 'text-principiaBlue')
+                }
+                onClick={(e) => {
+                  e.preventDefault()
+                  setOpenTab(0)
+                }}
+                href="#link1">
+                Software y Hardware
+              </a>
+            </li>
+            <li className="mr-2 last:mr-0 flex-auto text-center">
+              <a
+                className={
+                  'text-md font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal ' +
+                  (openTab === 1 ? 'bg-principiaBlue' : 'text-principiaBlue')
                 }
                 onClick={(e) => {
                   e.preventDefault()
                   setOpenTab(1)
                 }}
-                data-toggle="tab"
-                href="#link1">
-                Profile
+                href="#link2">
+                Lenguajes de Programación
               </a>
             </li>
-            <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
+            <li className="mr-2 last:mr-0 flex-auto text-center">
               <a
                 className={
-                  'text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal ' +
-                  (openTab === 2 ? 'text-white' : 'bg-white')
+                  'text-md font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal ' +
+                  (openTab === 2 ? 'bg-principiaBlue' : 'text-principiaBlue')
                 }
                 onClick={(e) => {
                   e.preventDefault()
                   setOpenTab(2)
                 }}
-                data-toggle="tab"
-                href="#link2">
-                Settings
-              </a>
-            </li>
-            <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
-              <a
-                className={
-                  'text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal ' +
-                  (openTab === 3 ? 'text-principiaGreen' : 'bg-principiaGreen')
-                }
-                onClick={(e) => {
-                  e.preventDefault()
-                  setOpenTab(3)
-                }}
                 href="#link3">
-                Options
+                Código Binario
               </a>
             </li>
           </ul>
           <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
             <div className="px-4 py-5 flex-auto">
               <div className="tab-content tab-space">
-                <div className={openTab === 1 ? 'block' : 'hidden'} id="link1">
-                  <YoutubeEmbed youtubeId={'6svvtOjLA-A'} />
+                <div className={openTab === 0 ? 'block' : 'hidden'} id="link1">
+                  <YoutubeEmbed youtubeId={'3F-kuNGlNco'} />
                 </div>
-                <div className={openTab === 2 ? 'block' : 'hidden'} id="link2">
-                  <p>
-                    Completely synergize resource taxing relationships via
-                    premier niche markets. Professionally cultivate one-to-one
-                    customer service with robust ideas.
-                    <br />
-                    <br />
-                    Dynamically innovate resource-leveling customer service for
-                    state of the art customer service.
-                  </p>
+                <div className={openTab === 1 ? 'block' : 'hidden'} id="link2">
+                  <YoutubeEmbed youtubeId={'pWw4UtQhdek'} />
                 </div>
-                <div className={openTab === 3 ? 'block' : 'hidden'} id="link3">
-                  <p>
-                    Efficiently unleash cross-media information without
-                    cross-media value. Quickly maximize timely deliverables for
-                    real-time schemas.
-                    <br />
-                    <br /> Dramatically maintain clicks-and-mortar solutions
-                    without functional solutions.
-                  </p>
+                <div className={openTab === 2 ? 'block' : 'hidden'} id="link3">
+                  <YoutubeEmbed youtubeId={'f5Onw5qTOz4'} />
                 </div>
               </div>
             </div>

@@ -9,9 +9,9 @@ function YoutubeEmbed({ youtubeId }) {
       <iframe
         style={{ display: !loading ? 'block' : 'none' }}
         onLoad={() => setLoading(false)}
-        width="853"
+        width="780"
         height="480"
-        src={`https://www.youtube.com/embed/${youtubeId}`}
+        src={`https://www.youtube.com/embed/${youtubeId}?rel=0`}
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
