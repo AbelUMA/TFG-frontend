@@ -28,15 +28,21 @@ function Home() {
     <Loading />
   ) : (
     <div className="flex mx-10 mt-20 text-center">
-      <div className="shadow-lg w-1/2 py-10 px-6 mr-10 my-auto text-left">
+      <motion.div
+        key={openTab}
+        transition={{
+          duration: 0.5,
+        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="shadow-lg w-1/2 py-10 px-6 mr-10 my-auto text-left">
         {captions[openTab] ? (
           <>
-            <div className="text-center font-bold text-2xl text-principiaBlue">
+            <motion.div className="text-center font-bold text-2xl text-principiaBlue">
               {captions[openTab].title}
-            </div>
+            </motion.div>
             <motion.div
               className="mt-10 text-xl"
-              key={captions[openTab].id}
               dangerouslySetInnerHTML={{
                 __html: captions[openTab].text,
               }}></motion.div>
@@ -44,7 +50,7 @@ function Home() {
         ) : (
           <Loading />
         )}
-      </div>
+      </motion.div>
       <div className="mx-auto">
         <Tabs openTab={openTab} setOpenTab={setOpenTab} />
       </div>
