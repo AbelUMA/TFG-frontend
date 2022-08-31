@@ -11,6 +11,7 @@ function AlgorithmExamples() {
   const [examples, setExamples] = useState([{}])
   const [whileCont, setWhileCont] = useState(1)
   const [forCont, setForCont] = useState(1)
+  const [whileControl, setWhileControl] = useState(false)
 
   useEffect(() => {
     const getAlgorithmExample = async () => {
@@ -49,31 +50,73 @@ function AlgorithmExamples() {
     const downButton = document.getElementById('down-button')
     const upButton = document.getElementById('up-button')
 
-    if (currentLane === countCodeElements) {
-      downButton.classList.add('opacity-50')
-      downButton.classList.add('pointer-events-none')
-    } else {
-      const oldCodeLane = codeClass[currentLane - 1]
-      oldCodeLane.setAttribute('style', '')
-
-      setCurrentLane(currentLane + 1)
-
-      const currentCodeLane = document.querySelector(
-        '[data-code="' + (currentLane + 1) + '"]'
-      )
-
-      currentCodeLane.style.background = '#2986cc'
-      currentCodeLane.style.borderRadius = '0.5rem'
-
-      if (currentLane === countCodeElements - 1) {
-        const downButton = document.getElementById('down-button')
-        downButton.classList.add('opacity-50')
-        downButton.classList.add('pointer-events-none')
-      }
-
+    if (currentExample === 3) {
       if (currentLane + 1 > 1) {
         upButton.classList.remove('opacity-50')
         upButton.classList.remove('pointer-events-none')
+      }
+      if (currentLane + 1 === countCodeElements) {
+        downButton.classList.add('opacity-50')
+        downButton.classList.add('pointer-events-none')
+      }
+      const oldCodeLane = document.querySelector(
+        '[data-code="' + currentLane + '"]'
+      )
+      oldCodeLane.setAttribute('style', '')
+      setCurrentLane(currentLane + 1)
+      const currentCodeLane = document.querySelector(
+        '[data-code="' + (currentLane + 1) + '"]'
+      )
+      currentCodeLane.style.background = '#2986cc'
+      currentCodeLane.style.borderRadius = '0.5rem'
+
+      switch (currentLane + 1) {
+        case 2:
+          var count = document.getElementById('count-3')
+          setWhileCont(1)
+          count.innerHTML = whileCont
+          break
+        case 3:
+          if (whileCont < 5) {
+            setWhileCont(whileCont + 1)
+            setCurrentLane(2)
+            setWhileControl(false)
+          } else if (whileCont === 5) {
+            setCurrentLane(3)
+          }
+          count = document.getElementById('count-3')
+          count.innerHTML = whileCont
+          break
+        default:
+          break
+      }
+    } else {
+      if (currentLane === countCodeElements) {
+        downButton.classList.add('opacity-50')
+        downButton.classList.add('pointer-events-none')
+      } else {
+        const oldCodeLane = codeClass[currentLane - 1]
+        oldCodeLane.setAttribute('style', '')
+
+        setCurrentLane(currentLane + 1)
+
+        const currentCodeLane = document.querySelector(
+          '[data-code="' + (currentLane + 1) + '"]'
+        )
+
+        currentCodeLane.style.background = '#2986cc'
+        currentCodeLane.style.borderRadius = '0.5rem'
+
+        if (currentLane === countCodeElements - 1) {
+          const downButton = document.getElementById('down-button')
+          downButton.classList.add('opacity-50')
+          downButton.classList.add('pointer-events-none')
+        }
+
+        if (currentLane + 1 > 1) {
+          upButton.classList.remove('opacity-50')
+          upButton.classList.remove('pointer-events-none')
+        }
       }
     }
 
@@ -131,7 +174,7 @@ function AlgorithmExamples() {
             break
         }
         break
-      case 3:
+      /* case 3:
         switch (currentLane) {
           case 1:
             var count = document.getElementById('count-3')
@@ -156,7 +199,7 @@ function AlgorithmExamples() {
           default:
             break
         }
-        break
+        break */
       case 4:
         switch (currentLane) {
           case 1:
@@ -197,29 +240,101 @@ function AlgorithmExamples() {
     const upButton = document.getElementById('up-button')
     const downButton = document.getElementById('down-button')
 
-    if (currentLane === 1) {
-      upButton.classList.add('opacity-50')
-      upButton.classList.add('pointer-events-none')
-    } else {
-      const oldCodeLane = codeClass[currentLane - 1]
-      oldCodeLane.setAttribute('style', '')
-
-      setCurrentLane(currentLane - 1)
-
-      const currentCodeLane = document.querySelector(
-        '[data-code="' + (currentLane - 1) + '"]'
-      )
-      currentCodeLane.style.background = '#2986cc'
-      currentCodeLane.style.borderRadius = '0.5rem'
-
-      if (currentLane - 1 === 1) {
+    if (currentExample === 3) {
+      if (whileControl) {
         upButton.classList.add('opacity-50')
         upButton.classList.add('pointer-events-none')
-      }
-
-      if (currentLane - 1 > 1) {
         downButton.classList.remove('opacity-50')
         downButton.classList.remove('pointer-events-none')
+      }
+
+      if (currentLane > 2) {
+        const oldCodeLane = document.querySelector(
+          '[data-code="' + currentLane + '"]'
+        )
+        oldCodeLane.setAttribute('style', '')
+        setCurrentLane(currentLane - 1)
+        const currentCodeLane = document.querySelector(
+          '[data-code="' + (currentLane - 1) + '"]'
+        )
+        currentCodeLane.style.background = '#2986cc'
+        currentCodeLane.style.borderRadius = '0.5rem'
+      }
+
+      switch (currentLane) {
+        case 1:
+          var count = document.getElementById('count-3')
+          count = document.getElementById('count-3')
+          count.innerHTML = ''
+          break
+        case 2:
+          count = document.getElementById('count-3')
+          if (whileControl) {
+            setCurrentLane(currentLane - 1)
+            const oldCodeLane = document.querySelector("[data-code='2']")
+            oldCodeLane.setAttribute('style', '')
+            const currentCodeLane = document.querySelector("[data-code='1']")
+            currentCodeLane.style.background = '#2986cc'
+            currentCodeLane.style.borderRadius = '0.5rem'
+          } else if (whileCont > 1) {
+            setWhileCont(whileCont - 1)
+            count.innerHTML = whileCont - 1
+            setCurrentLane(2)
+          } else if (whileCont === 1) {
+            const oldCodeLane = document.querySelector("[data-code='3']")
+            oldCodeLane.setAttribute('style', '')
+            const currentCodeLane = document.querySelector("[data-code='2']")
+            currentCodeLane.style.background = '#2986cc'
+            currentCodeLane.style.borderRadius = '0.5rem'
+            setWhileControl(true)
+          }
+          break
+        case 3:
+          if (whileCont > 1) {
+            setWhileCont(whileCont - 1)
+            setCurrentLane(3)
+          } else if (whileCont === 1) {
+            setCurrentLane(2)
+          }
+          break
+        case 4:
+          if (whileCont > 1) {
+            setWhileCont(whileCont - 1)
+            setCurrentLane(4)
+          } else if (whileCont === 1) {
+            setCurrentLane(3)
+          }
+          count = document.getElementById('count-3')
+          count.innerHTML = whileCont
+          break
+        default:
+          break
+      }
+    } else {
+      if (currentLane === 1) {
+        upButton.classList.add('opacity-50')
+        upButton.classList.add('pointer-events-none')
+      } else {
+        const oldCodeLane = codeClass[currentLane - 1]
+        oldCodeLane.setAttribute('style', '')
+
+        setCurrentLane(currentLane - 1)
+
+        const currentCodeLane = document.querySelector(
+          '[data-code="' + (currentLane - 1) + '"]'
+        )
+        currentCodeLane.style.background = '#2986cc'
+        currentCodeLane.style.borderRadius = '0.5rem'
+
+        if (currentLane - 1 === 1) {
+          upButton.classList.add('opacity-50')
+          upButton.classList.add('pointer-events-none')
+        }
+
+        if (currentLane - 1 > 1) {
+          downButton.classList.remove('opacity-50')
+          downButton.classList.remove('pointer-events-none')
+        }
       }
     }
 
@@ -266,39 +381,6 @@ function AlgorithmExamples() {
             const output = document.getElementById('output-2')
             output.innerHTML = ''
             break
-          default:
-            break
-        }
-        break
-      case 3:
-        switch (currentLane) {
-          case 1:
-            setWhileCont(1)
-            break
-          case 2:
-            var count = document.getElementById('count-3')
-            count.innerHTML = ''
-            break
-          case 3:
-            if (whileCont > 1) {
-              setWhileCont(whileCont - 1)
-              setCurrentLane(3)
-            }
-            break
-          case 4:
-            setWhileCont(whileCont - 1)
-            count = document.getElementById('count-3')
-            count.innerHTML = whileCont
-            if (whileCont > 1) {
-              setCurrentLane(4)
-            }
-            break
-          case 5:
-            const output = document.getElementById('output-3')
-            output.innerHTML = ''
-            setWhileCont(whileCont - 1)
-            break
-
           default:
             break
         }
