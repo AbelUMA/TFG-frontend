@@ -9,8 +9,8 @@ function AlgorithmExamples() {
   const [currentLane, setCurrentLane] = useState(1)
   const [currentExample, setCurrentExample] = useState(0)
   const [examples, setExamples] = useState([{}])
-  const [whileCont, setWhileCont] = useState(1)
-  const [forCont, setForCont] = useState(1)
+  const [whileCount, setWhileCount] = useState(1)
+  const [forCount, setForCount] = useState(1)
   const [whileControl, setWhileControl] = useState(false)
   const [forControl, setForControl] = useState(false)
 
@@ -64,6 +64,8 @@ function AlgorithmExamples() {
         const currentCodeLane = document.querySelector("[data-code='5']")
         currentCodeLane.style.background = '#2986cc'
         currentCodeLane.style.borderRadius = '0.5rem'
+        var output = document.getElementById('output-3')
+        output.innerHTML = whileCount
       }
 
       if (currentLane < 4) {
@@ -82,23 +84,23 @@ function AlgorithmExamples() {
       switch (currentLane + 1) {
         case 2:
           var countWhile = document.getElementById('count-3')
-          setWhileCont(1)
-          countWhile.innerHTML = whileCont
+          setWhileCount(1)
+          countWhile.innerHTML = whileCount
           break
         case 3:
-          if (whileCont < 5) {
-            setWhileCont(whileCont + 1)
+          if (whileCount < 5) {
+            setWhileCount(whileCount + 1)
             setCurrentLane(2)
             setWhileControl(false)
-          } else if (whileCont === 5) {
+          } else if (whileCount === 5) {
             setCurrentLane(3)
           }
           countWhile = document.getElementById('count-3')
-          countWhile.innerHTML = whileCont
+          countWhile.innerHTML = whileCount
           break
         case 5:
-          if (whileCont < 5) {
-            setWhileCont(whileCont + 1)
+          if (whileCount < 5) {
+            setWhileCount(whileCount + 1)
             setCurrentLane(4)
             setWhileControl(false)
           } else {
@@ -110,7 +112,7 @@ function AlgorithmExamples() {
             setCurrentLane(5)
           }
           countWhile = document.getElementById('count-3')
-          countWhile.innerHTML = whileCont
+          countWhile.innerHTML = whileCount
           break
         default:
           break
@@ -120,31 +122,66 @@ function AlgorithmExamples() {
         upButton.classList.remove('opacity-50')
         upButton.classList.remove('pointer-events-none')
       }
-      if (currentLane + 1 === countCodeElements) {
+      if (currentLane === countCodeElements) {
         downButton.classList.add('opacity-50')
         downButton.classList.add('pointer-events-none')
+        const oldCodeLane = document.querySelector("[data-code='4']")
+        oldCodeLane.setAttribute('style', '')
+        const currentCodeLane = document.querySelector("[data-code='5']")
+        currentCodeLane.style.background = '#2986cc'
+        currentCodeLane.style.borderRadius = '0.5rem'
+        output = document.getElementById('output-4')
+        output.innerHTML = forCount
+      }
+
+      if (currentLane < 4) {
+        const oldCodeLane = document.querySelector(
+          '[data-code="' + currentLane + '"]'
+        )
+        oldCodeLane.setAttribute('style', '')
+        setCurrentLane(currentLane + 1)
+        const currentCodeLane = document.querySelector(
+          '[data-code="' + (currentLane + 1) + '"]'
+        )
+        currentCodeLane.style.background = '#2986cc'
+        currentCodeLane.style.borderRadius = '0.5rem'
       }
 
       switch (currentLane + 1) {
         case 2:
-          var resultFor = document.getElementById('result-4')
-          setForCont(1)
-          resultFor.innerHTML = '0'
+          var countFor = document.getElementById('result-4')
+          setForCount(1)
+          countFor.innerHTML = forCount
           break
         case 3:
-          resultFor = document.getElementById('result-4')
-          resultFor.innerHTML = forCont
-          var iFor = document.getElementById('i-4')
-          iFor.innerHTML = forCont
-          if (forCont < 5) {
-            setForCont(forCont + 1)
+          if (forCount < 5) {
+            setForCount(forCount + 1)
             setCurrentLane(2)
             setForControl(false)
-          } else if (forCont === 5) {
+          } else if (forCount === 5) {
             setCurrentLane(3)
           }
+          countFor = document.getElementById('result-4')
+          countFor.innerHTML = forCount
+          var iFor = document.getElementById('i-4')
+          iFor.innerHTML = forCount
           break
-
+        case 5:
+          if (forCount < 5) {
+            setForCount(forCount + 1)
+            setCurrentLane(4)
+            setForControl(false)
+          } else {
+            const oldCodeLane = document.querySelector("[data-code='3']")
+            oldCodeLane.setAttribute('style', '')
+            const currentCodeLane = document.querySelector("[data-code='4']")
+            currentCodeLane.style.background = '#2986cc'
+            currentCodeLane.style.borderRadius = '0.5rem'
+            setCurrentLane(5)
+          }
+          countFor = document.getElementById('result-4')
+          countFor.innerHTML = forCount
+          break
         default:
           break
       }
@@ -232,37 +269,6 @@ function AlgorithmExamples() {
             break
         }
         break
-
-      /*       case 4:
-        switch (currentLane) {
-          case 1:
-            var result = document.getElementById('result-4')
-            setForCont(1)
-            result.innerHTML = 0
-            break
-          case 2:
-            var i = document.getElementById('i-4')
-            i.innerHTML = 1
-            if (forCont < 5) {
-              setForCont(forCont + 1)
-              setCurrentLane(2)
-            } else if (forCont === 5) {
-              setCurrentLane(3)
-            }
-            result = document.getElementById('result-4')
-            result.innerHTML = forCont
-            i = document.getElementById('i-4')
-            i.innerHTML = forCont
-            break
-          case 4:
-            const output = document.getElementById('output-4')
-            output.innerHTML = forCont
-            setForCont(forCont - 1)
-            break
-          default:
-            break
-        }
-        break */
       default:
         break
     }
@@ -310,11 +316,11 @@ function AlgorithmExamples() {
             currentCodeLane.style.background = '#2986cc'
             currentCodeLane.style.borderRadius = '0.5rem'
             count.innerHTML = ''
-          } else if (whileCont > 1) {
-            setWhileCont(whileCont - 1)
-            count.innerHTML = whileCont - 1
+          } else if (whileCount > 1) {
+            setWhileCount(whileCount - 1)
+            count.innerHTML = whileCount - 1
             setCurrentLane(2)
-          } else if (whileCont === 1) {
+          } else if (whileCount === 1) {
             const oldCodeLane = document.querySelector("[data-code='3']")
             oldCodeLane.setAttribute('style', '')
             const currentCodeLane = document.querySelector("[data-code='2']")
@@ -324,24 +330,30 @@ function AlgorithmExamples() {
           }
           break
         case 3:
-          if (whileCont > 1) {
-            setWhileCont(whileCont - 1)
-            setCurrentLane(3)
-          } else if (whileCont === 1) {
+          if (whileCount > 1) {
+            const oldCodeLane = document.querySelector("[data-code='2']")
+            oldCodeLane.setAttribute('style', '')
+            const currentCodeLane = document.querySelector("[data-code='3']")
+            currentCodeLane.style.background = '#2986cc'
+            currentCodeLane.style.borderRadius = '0.5rem'
+            setCurrentLane(4)
+          } else if (whileCount === 1) {
             setCurrentLane(2)
           }
           break
         case 4:
-          if (whileCont > 1) {
-            setWhileCont(whileCont - 1)
+          if (whileCount > 1) {
+            setWhileCount(whileCount - 1)
             setCurrentLane(4)
-          } else if (whileCont === 1) {
+          } else if (whileCount === 1) {
             setCurrentLane(3)
           }
           count = document.getElementById('count-3')
-          count.innerHTML = whileCont
+          count.innerHTML = whileCount
           break
         case 5:
+          var outputWhile = document.getElementById('output-3')
+          outputWhile.innerHTML = ''
           break
         default:
           break
@@ -352,6 +364,7 @@ function AlgorithmExamples() {
         upButton.classList.add('pointer-events-none')
         downButton.classList.remove('opacity-50')
         downButton.classList.remove('pointer-events-none')
+        setCurrentLane(1)
       }
 
       downButton.classList.remove('opacity-50')
@@ -372,8 +385,8 @@ function AlgorithmExamples() {
 
       switch (currentLane) {
         case 2:
-          var resultFor = document.getElementById('result-4')
-          resultFor = document.getElementById('result-4')
+          var result = document.getElementById('result-4')
+          var iFor = document.getElementById('i-4')
           if (forControl) {
             setCurrentLane(currentLane - 1)
             const oldCodeLane = document.querySelector("[data-code='2']")
@@ -381,12 +394,14 @@ function AlgorithmExamples() {
             const currentCodeLane = document.querySelector("[data-code='1']")
             currentCodeLane.style.background = '#2986cc'
             currentCodeLane.style.borderRadius = '0.5rem'
-            resultFor.innerHTML = ''
-          } else if (forCont > 1) {
-            setForCont(forCont - 1)
-            resultFor.innerHTML = forCont - 1
+            result.innerHTML = ''
+            iFor.innerHTML = ''
+          } else if (forCount > 1) {
+            setForCount(forCount - 1)
+            result.innerHTML = forCount - 1
+            iFor.innerHTML = forCount - 1
             setCurrentLane(2)
-          } else if (forCont === 1) {
+          } else if (forCount === 1) {
             const oldCodeLane = document.querySelector("[data-code='3']")
             oldCodeLane.setAttribute('style', '')
             const currentCodeLane = document.querySelector("[data-code='2']")
@@ -396,22 +411,36 @@ function AlgorithmExamples() {
           }
           break
         case 3:
-          if (forCont > 1) {
-            setForCont(forCont - 1)
-            setCurrentLane(3)
-          } else if (forCont === 1) {
+          if (forCount > 1) {
+            const oldCodeLane = document.querySelector("[data-code='2']")
+            oldCodeLane.setAttribute('style', '')
+            const currentCodeLane = document.querySelector("[data-code='3']")
+            currentCodeLane.style.background = '#2986cc'
+            currentCodeLane.style.borderRadius = '0.5rem'
+            setCurrentLane(4)
+          } else if (forCount === 1) {
             setCurrentLane(2)
           }
+          result = document.getElementById('result-4')
+          result.innerHTML = forCount
+          iFor = document.getElementById('i-4')
+          iFor.innerHTML = forCount
           break
         case 4:
-          if (forCont > 1) {
-            setForCont(forCont - 1)
+          if (forCount > 1) {
+            setForCount(forCount - 1)
             setCurrentLane(4)
-          } else if (forCont === 1) {
+          } else if (forCount === 1) {
             setCurrentLane(3)
           }
-          resultFor = document.getElementById('result-4')
-          resultFor.innerHTML = forCont
+          result = document.getElementById('result-4')
+          result.innerHTML = forCount
+          iFor = document.getElementById('i-4')
+          iFor.innerHTML = forCount
+          break
+        case 5:
+          var outputFor = document.getElementById('output-4')
+          outputFor.innerHTML = ''
           break
         default:
           break
@@ -491,45 +520,6 @@ function AlgorithmExamples() {
             break
         }
         break
-      case 4:
-        switch (currentLane) {
-          case 1:
-            setForCont(1)
-            break
-          case 2:
-            var result = document.getElementById('result-4')
-            result.innerHTML = ''
-            var i = document.getElementById('i-4')
-            i.innerHTML = ''
-            setForCont(forCont + 1)
-
-            break
-          case 3:
-            if (forCont > 1) {
-              setForCont(forCont - 1)
-              setCurrentLane(3)
-            }
-            break
-          case 4:
-            result = document.getElementById('result-4')
-            result.innerHTML = forCont
-            i = document.getElementById('i-4')
-            i.innerHTML = forCont
-            setForCont(forCont - 1)
-            if (forCont > 1) {
-              setCurrentLane(4)
-            }
-            break
-          case 5:
-            const output = document.getElementById('output-4')
-            output.innerHTML = ''
-            break
-
-          default:
-            break
-        }
-        break
-
       default:
         break
     }
@@ -626,7 +616,7 @@ function AlgorithmExamples() {
               className="ml-5"></div>
           </div>
           <div
-            className="h-2/5 text-justify justify-center items-center mx-2 mt-16 bg-gray-400 p-4 border-2 border-black rounded-md"
+            className="h-2/5 text-justify justify-center items-center mx-2 mt-16 bg-gray-400 p-4 border-2 text-xl font-semibold border-black rounded-md"
             dangerouslySetInnerHTML={{
               __html: examples[currentExample].extraContent,
             }}></div>
