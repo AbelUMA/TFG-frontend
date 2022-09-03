@@ -124,7 +124,7 @@ function Exercise2() {
               <div className="mt-5">&#123;</div>
               <div className="flex flex-row mt-20">
                 <div className="mt-4 mr-6 text-[#ac38a3]">return</div>
-                <DropTarget dropData="COUNT">
+                <DropTarget dropData="NUM">
                   <div className="text-lg font-bold options justify-center items-center text-center  inline-block box-content h-8 w-28 p-4 border-4 rounded-md border-dashed"></div>
                 </DropTarget>
               </div>
