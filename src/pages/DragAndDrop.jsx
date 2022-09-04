@@ -7,7 +7,7 @@ import { motion } from 'framer-motion'
 import axiosAPI from '../config/axiosAPI'
 import Loading from '../components/Loading'
 import { AiOutlineQuestionCircle, AiOutlineReload } from 'react-icons/ai'
-import Popup from './Popup'
+import Popup from '../components/Popup'
 
 function DragAndDrop() {
   const [loading, setLoading] = useState(false)
