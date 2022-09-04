@@ -11,7 +11,6 @@ import Exercise1 from '../../components/Exercises/Exercise1.jsx'
 function AlgorithmYourself() {
   const controls = useAnimation()
 
-  const [loading, setLoading] = useState(false)
   const [isOpenDoor, setIsOpenDoor] = useState(false)
   const [isStartGame, setIsStartGame] = useState(false)
 

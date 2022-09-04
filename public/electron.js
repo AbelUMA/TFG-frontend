@@ -1,4 +1,5 @@
 const path = require('path')
+const url = require('url')
 const { app, BrowserWindow } = require('electron')
 
 function createWindow() {
@@ -11,7 +12,14 @@ function createWindow() {
   })
 
   if (app.isPackaged) {
-    mainWindow.loadFile(path.join(__dirname, '../build/index.html'))
+    mainWindow.loadURL(
+      url.format({
+        pathname: path.join(__dirname, 'index.html'),
+        protocol: 'file:',
+        slashes: true,
+      })
+    )
+    /* mainWindow.loadFile(path.join(__dirname, 'index.html')) */
   } else {
     mainWindow.loadURL('http://localhost:3000')
   }
