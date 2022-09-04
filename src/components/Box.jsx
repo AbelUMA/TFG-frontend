@@ -20,7 +20,7 @@ function Box({ boxes, targetKey, setIsOpenPopup }) {
   }
 
   return (
-    <div className="w-1/2  w-1/2 h-screen">
+    <div className="w-1/2 h-screen">
       <h2 className="font-black text-3xl text-center">Huecos para completar</h2>
       <p className="text-xl mt-5 mb-10 text-center">
         Comienza arrastrando tarjetas {''}

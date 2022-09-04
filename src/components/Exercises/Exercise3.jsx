@@ -87,7 +87,7 @@ function Exercise3() {
     <>
       <div className="container mx-auto   overflow-hidden">
         <div className="mt-5 h-screen flex items-stretch  ">
-          <div className="relative h-4/5  w-1/2 border-2 border-black rounded-md text-center w-full bg-gray-400 mx-2">
+          <div className="relative h-4/5  w-1/2 border-2 border-black rounded-md text-center bg-gray-400 mx-2">
             <div className="mt-14 py-6 px-9 text-xl font-medium text-left w-full">
               <div className="flex flex-row">
                 <DropTarget dropData="INT">

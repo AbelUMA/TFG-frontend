@@ -33,7 +33,7 @@ function Card({ cards, targetKey }) {
   }
 
   return (
-    <div className="w-1/2  w-1/2 mx-5">
+    <div className="w-1/2 mx-5">
       <div>
         <h2 className="font-black text-3xl text-center">
           Tarjetas para Arrastrar
