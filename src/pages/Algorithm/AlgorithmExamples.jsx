@@ -568,7 +568,7 @@ function AlgorithmExamples() {
   ) : (
     <div className="container mx-auto   overflow-hidden">
       <div className="mt-5 h-screen flex items-stretch  ">
-        <div className="relative h-4/5 lg:w-1/2 border-2 border-black rounded-md text-center w-full bg-gray-900 mx-2">
+        <div className="relative h-4/5  w-1/2 border-2 border-black rounded-md text-center w-full bg-gray-900 mx-2">
           <h2 className="mt-10 text-3xl font-semibold text-white">
             {examples[currentExample].title}
           </h2>
@@ -606,7 +606,7 @@ function AlgorithmExamples() {
             </div>
           </div>
         </div>
-        <div className="lg:w-1/2 ">
+        <div className=" w-1/2 ">
           <div className="h-1/3 border-2 border-black rounded-md text-center justify-center items-center mx-2">
             <div className="py-6 px-9 text-2xl font-medium">PROGRAMA</div>
             <div

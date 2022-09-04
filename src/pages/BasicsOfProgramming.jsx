@@ -49,7 +49,7 @@ function BasicsOfProgramming() {
     <Loading />
   ) : (
     <div className="mt-5 flex items-stretch  ">
-      <div className="md:w-1/2 lg:w-1/2 mx-5">
+      <div className="w-1/2  w-1/2 mx-5">
         <h2 className="font-black text-3xl text-center">
           Conceptos básicos sobre la programación
         </h2>
@@ -76,7 +76,7 @@ function BasicsOfProgramming() {
           ))}
         </div>
       </div>
-      <div className="md:w-1/2 lg:w-1/2">
+      <div className="w-1/2  w-1/2">
         <h2 className="font-black text-3xl text-center">
           Te contamos un poco sobre...
         </h2>
