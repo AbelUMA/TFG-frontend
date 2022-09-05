@@ -56,7 +56,7 @@ export const sidebarMenu = [
   },
   {
     id: 8,
-    title: 'Conóceme',
+    title: 'Sobre mí',
     url: '/presentation',
     icon: <AiOutlineUser />,
     submenu: '',

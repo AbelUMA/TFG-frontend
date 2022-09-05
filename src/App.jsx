@@ -5,7 +5,7 @@ import Welcome from './pages/Welcome'
 import DragAndDrop from './pages/DragAndDrop'
 import Information from './pages/Information'
 import Home from './pages/Home'
-import Presentation from './pages/Presentation'
+import AboutMe from './pages/AboutMe'
 import Algorithm from './pages/Algorithm/Algorithm'
 import BasicsOfProgramming from './pages/BasicsOfProgramming'
 import Quiz from './pages/Quiz'
@@ -18,7 +18,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<Layout presentation={true} />}>
-          <Route path="/presentation" element={<Presentation />} />
+          <Route path="/presentation" element={<AboutMe />} />
         </Route>
         <Route index element={<Welcome />} />
         <Route path="/" element={<Layout />}>

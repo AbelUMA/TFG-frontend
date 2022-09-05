@@ -8,7 +8,7 @@ import UmaLogo from '../media/img/presentation/UMA-logo.jpg'
 import PrincipiaLogo from '../media/img/presentation/principia-logo.png'
 import { sidebarMenu } from '../data/menu'
 
-function Presentation() {
+function AboutMe() {
   const [footerMenu] = useState(sidebarMenu)
 
   const animation = {
@@ -135,4 +135,4 @@ function Presentation() {
   )
 }
 
-export default Presentation
+export default AboutMe
