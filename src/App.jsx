@@ -12,6 +12,7 @@ import Quiz from './pages/Quiz'
 import AlgorithmExamples from './pages/Algorithm/AlgorithmExamples'
 import AlgorithmYourself from './pages/Algorithm/AlgorithmYourself'
 import Exercises from './pages/Algorithm/Exercises'
+import Programming from './pages/Programming'
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path="/algorithm/yourself" element={<AlgorithmYourself />} />
           <Route path="/algorithm/yourself/:id" element={<Exercises />} />
           <Route path="/info" element={<Information />} />
+          <Route path="/programming" element={<Programming />} />
         </Route>
       </Routes>
     </BrowserRouter>

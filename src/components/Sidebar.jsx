@@ -85,7 +85,7 @@ function Sidebar() {
               width: 0,
               transition: { delay: 0.7, duration: 0.3 },
             }}>
-            <h2 className="text-3xl font-semibold text-white p-6 mt-8">Menu</h2>
+            <h2 className="text-3xl font-semibold text-white p-6 mt-3">Menu</h2>
             <motion.div
               className="flex flex-col justify-between mt-4"
               variants={sideVariants}

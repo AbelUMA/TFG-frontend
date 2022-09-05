@@ -3,6 +3,7 @@ import {
   AiOutlineHome,
   AiOutlineInfoCircle,
   AiOutlineUser,
+  AiOutlineLaptop,
 } from 'react-icons/ai'
 import { BiBrain } from 'react-icons/bi'
 
@@ -49,13 +50,20 @@ export const sidebarMenu = [
   },
   {
     id: 7,
+    title: '¡A programar!',
+    url: '/programming',
+    icon: <AiOutlineLaptop />,
+    submenu: '',
+  },
+  {
+    id: 8,
     title: 'Información',
     url: '/info',
     icon: <AiOutlineInfoCircle />,
     submenu: '',
   },
   {
-    id: 8,
+    id: 9,
     title: 'Sobre mí',
     url: '/presentation',
     icon: <AiOutlineUser />,
