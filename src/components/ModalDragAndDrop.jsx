@@ -2,7 +2,7 @@ import { React } from 'react'
 import { motion } from 'framer-motion'
 import { VscChromeClose } from 'react-icons/vsc'
 
-function Modal({ setIsOpenModal }) {
+function ModalDragAndDrop({ setIsOpenModal }) {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex">
       <div className="bg-white p-4 rounded w-full relative mx-80 my-40">
@@ -46,4 +46,4 @@ function Modal({ setIsOpenModal }) {
   )
 }
 
-export default Modal
+export default ModalDragAndDrop

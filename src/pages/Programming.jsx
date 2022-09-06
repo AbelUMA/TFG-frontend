@@ -4,17 +4,17 @@ import { BsGearFill } from 'react-icons/bs'
 import { AiOutlineEnter } from 'react-icons/ai'
 
 function Programming() {
+  const [lineNumber, setLineNumber] = useState(0)
   const [input, setInput] = useState('')
   const [output, setOutput] = useState({})
   const [userInput, setUserInput] = useState({})
 
   const handleInput = (event) => {
-    setInput(event.target.value)
-  }
+    if (event.target.value.includes('\n')) {
+      setLineNumber(lineNumber + 1)
+    }
 
-  const handleUserInput = (event) => {
-    event.preventDefault()
-    setUserInput(event.target.value)
+    setInput(event.target.value)
   }
 
   const handleClear = () => {
@@ -49,7 +49,8 @@ function Programming() {
     ) {
       output.innerHTML += 'ERROR \n'
     } else {
-      result += ' ' + input.replaceAll('print', 'console.log')
+      result += lineNumber + '. ' + input.replaceAll('print', 'console.log')
+
       try {
         const func = new Function(result)
         func()
@@ -101,7 +102,7 @@ function Programming() {
           <textarea
             readOnly
             id="output"
-            className="h-[69.7%] w-full border-2 border-black rounded-md bg-gray-200 px-4 py-2 caret-transparent"></textarea>
+            className="resize-none h-[69.7%] w-full border-2 border-black rounded-md bg-gray-200 px-4 py-2 caret-transparent"></textarea>
         </div>
       </div>
     </>
