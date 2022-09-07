@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 /* eslint-disable no-new-func */
 import { React, useState } from 'react'
 import CodeEditor from '@uiw/react-textarea-code-editor'
