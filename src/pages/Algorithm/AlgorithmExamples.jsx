@@ -568,7 +568,7 @@ function AlgorithmExamples() {
   ) : (
     <div className="container mx-auto   overflow-hidden">
       <div className="mt-5 h-screen flex items-stretch  ">
-        <div className="relative h-4/5  w-1/2 border-2 border-black rounded-md text-center w-full bg-gray-900 mx-2">
+        <div className="relative h-4/5 border-2 border-black rounded-md text-center w-full bg-gray-900 mx-2">
           <h2 className="mt-10 text-3xl font-semibold text-white">
             {examples[currentExample].title}
           </h2>

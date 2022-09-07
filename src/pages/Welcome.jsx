@@ -12,7 +12,7 @@ function Welcome() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         className="font-black text-5xl container mx-auto mt-20 text-center">
-        Juegos interactivos sobre la{' '}
+        Portal interactivo sobre la{' '}
         <span className="text-lime-500">programación</span>
       </motion.div>
       <motion.div
