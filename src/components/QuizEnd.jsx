@@ -5,7 +5,7 @@ const restartGame = () => {
   window.location.reload()
 }
 
-function ModalQuiz({ score, questionsLength }) {
+function QuizEnd({ score, questionsLength }) {
   return (
     <>
       <div className="text-center"></div>
@@ -30,4 +30,4 @@ function ModalQuiz({ score, questionsLength }) {
   )
 }
 
-export default ModalQuiz
+export default QuizEnd

@@ -2,7 +2,7 @@ import { React, useState, useEffect } from 'react'
 
 import Card from '../components/Card'
 import Box from '../components/Box'
-import ModalDragAndDrop from '../components/ModalDragAndDrop'
+import Modal from '../components/Modal'
 import { motion } from 'framer-motion'
 import axiosAPI from '../config/axiosAPI'
 import Loading from '../components/Loading'
@@ -85,7 +85,7 @@ function DragAndDrop() {
         </div>
       </>
 
-      {isOpenModal && <ModalDragAndDrop setIsOpenModal={setIsOpenModal} />}
+      {isOpenModal && <Modal setIsOpenModal={setIsOpenModal} type="dnd" />}
       {isOpenPopup && <Popup setIsOpenPopup={setIsOpenPopup} />}
     </>
   )

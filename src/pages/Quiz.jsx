@@ -2,7 +2,7 @@ import { React, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import axiosAPI from '../config/axiosAPI'
 import Loading from '../components/Loading'
-import ModalQuiz from '../components/ModalQuiz'
+import QuizEnd from '../components/QuizEnd'
 
 function Quiz() {
   const [showFinalResults, setShowFinalResults] = useState(false)
@@ -95,7 +95,7 @@ function Quiz() {
           </div>
         </>
       ) : (
-        <ModalQuiz score={score} questionsLength={questions.length} />
+        <QuizEnd score={score} questionsLength={questions.length} />
       )}
     </>
   )
