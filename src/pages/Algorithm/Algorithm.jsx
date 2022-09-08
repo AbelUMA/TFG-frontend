@@ -27,7 +27,7 @@ function Algorithm() {
           to={'/algorithm/yourself'}
           whileTap={{ scale: 0.9 }}
           className="relative h-3/4  w-1/2 border-2 border-black rounded-md text-center bg-gradient-to-r from-principiaBlue to-principiaGreen justify-center items-center mx-2">
-          <h2 className="mt-10 text-5xl font-semibold">Prueba tu mismo</h2>
+          <h2 className="mt-10 text-5xl font-semibold">Prueba tú mismo</h2>
           <div className="mt-14 py-6 px-9 text-2xl font-medium">
             En esta sección podrás poner a prueba todos tus conocimientos acerca
             de programación ya que, estará a tu disposición diferentes ejemplos
