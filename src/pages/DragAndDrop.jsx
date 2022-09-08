@@ -10,6 +10,7 @@ import { AiOutlineQuestionCircle, AiOutlineReload } from 'react-icons/ai'
 import Popup from '../components/Popup'
 
 function DragAndDrop() {
+  const [num, setNum] = useState(0)
   const [loading, setLoading] = useState(false)
 
   const [cards, setCards] = useState([{}])
@@ -19,10 +20,16 @@ function DragAndDrop() {
   const [isOpenPopup, setIsOpenPopup] = useState(false)
 
   useEffect(() => {
+    setNum(randomNumberInRange(1, 3))
+  }, [])
+
+  console.log(cards)
+
+  useEffect(() => {
     const getCards = async () => {
       try {
         setLoading(true)
-        const url = '/cards'
+        const url = '/cards?type=' + num
         const { data } = await axiosAPI(url)
         data.sort(() => 0.5 - Math.random())
         setCards(data)
@@ -35,7 +42,7 @@ function DragAndDrop() {
     const getBoxes = async () => {
       try {
         setLoading(true)
-        const url = '/boxes'
+        const url = '/boxes?type=' + num
         const { data } = await axiosAPI(url)
         data.sort(() => 0.5 - Math.random())
         setBoxes(data)
@@ -47,7 +54,13 @@ function DragAndDrop() {
 
     getCards()
     getBoxes()
-  }, [])
+  }, [num])
+
+  console.log(num)
+
+  function randomNumberInRange(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min
+  }
 
   return loading ? (
     <Loading />
@@ -85,7 +98,9 @@ function DragAndDrop() {
         </div>
       </>
 
-      {isOpenModal && <Modal setIsOpenModal={setIsOpenModal} type="dnd" />}
+      {isOpenModal && (
+        <Modal setIsOpenModal={setIsOpenModal} type="dnd" dataType={num} />
+      )}
       {isOpenPopup && <Popup setIsOpenPopup={setIsOpenPopup} />}
     </>
   )

@@ -2,7 +2,7 @@ import { React } from 'react'
 import { motion } from 'framer-motion'
 import { VscChromeClose } from 'react-icons/vsc'
 
-function Modal({ setIsOpenModal, type }) {
+function Modal({ setIsOpenModal, type, dataType }) {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex">
       <div className="bg-white p-4 rounded w-full relative mx-80 my-40">
@@ -23,13 +23,45 @@ function Modal({ setIsOpenModal, type }) {
               </li>
               <li className="mb-3">
                 Por ejemplo,{' '}
-                <span className="bg-principiaPurple rounded px-1 font-semibold text-white">
-                  VAR
-                </span>{' '}
-                pertenece al tipo{' '}
-                <span className="bg-principiaPurple rounded px-1 font-semibold text-white">
-                  GENERAL
-                </span>
+                {(() => {
+                  if (dataType === 1) {
+                    return (
+                      <>
+                        <span className="bg-principiaPurple rounded px-1 font-semibold text-white">
+                          VAR
+                        </span>{' '}
+                        pertenece al tipo{' '}
+                        <span className="bg-principiaPurple rounded px-1 font-semibold text-white">
+                          GENERAL
+                        </span>
+                      </>
+                    )
+                  } else if (dataType === 2) {
+                    return (
+                      <>
+                        <span className="bg-[#f4cccc] rounded px-1 font-semibold text-white">
+                          INT
+                        </span>{' '}
+                        pertenece al tipo{' '}
+                        <span className="bg-[#f4cccc] rounded px-1 font-semibold text-white">
+                          DATOS
+                        </span>
+                      </>
+                    )
+                  } else {
+                    return (
+                      <>
+                        <span className="bg-[#e6005b] rounded px-1 font-semibold text-white">
+                          ARRAY
+                        </span>{' '}
+                        pertenece al tipo{' '}
+                        <span className="bg-[#e6005b] rounded px-1 font-semibold text-white">
+                          ESTRUCTURA
+                        </span>
+                      </>
+                    )
+                  }
+                })()}
               </li>
               <li className="mb-3">
                 Entonces tu objetivo es conseguir llevar todas las tarjetas a
