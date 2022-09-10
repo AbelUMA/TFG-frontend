@@ -59,8 +59,8 @@ function Information() {
             </span>
           </li>
           <li>
-            Por último, nos tendremos que atrever a entrar de lleno en la
-            programación. Este sitio se encuentra en{' '}
+            Siguiendo por esta ruta, nos tendremos que atrever a entrar de lleno
+            en la programación. Este sitio se encuentra en{' '}
             <span className="text-principiaGreen font-bold">"Algoritmos"</span>{' '}
             como último juego. Aquí es donde vamos a juntar todo y atrevernos a{' '}
             <span className="text-principiaGreen font-bold">
@@ -73,6 +73,27 @@ function Information() {
               con su código
             </span>
             .
+          </li>
+          <li>
+            Por último, te tocará enfrentarte a lo que puede ser el mayor reto
+            de esta plataforma,{' '}
+            <span className="text-principiaGreen font-bold">
+              {' '}
+              ¡escribir tu propio código en un editor de texto y ejecutarlo!
+            </span>{' '}
+            Esto lo podrás encontrar el el apartado{' '}
+            <span className="text-principiaGreen font-bold">
+              "¡A programar!"
+            </span>{' '}
+            en el cuál te encontraras un espacio para escribir tu pequeño
+            programa y{' '}
+            <span className="text-principiaGreen font-bold">ejecutarlo</span>,
+            viendo por la salida el resultado. Si te encuentras un poco perdido
+            y no sabes por donde empezar, puedes hacer uso de un{' '}
+            <span className="text-principiaGreen font-bold">manual</span> que te
+            ofrece un empujón para progresar. También puedes volver a visitar
+            las páginas anteriores e imitar el código de ejemplo que estas
+            ofrecen.
           </li>
         </ul>
         <p className="text-xl font-semibold mt-10 mb-10">

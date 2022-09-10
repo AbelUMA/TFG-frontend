@@ -106,7 +106,7 @@ function Exercise3() {
                   <span className="text-[#bd3939]">i</span> = 0;{' '}
                   <span className="text-[#bd3939]">i </span> &#60; 10;{' '}
                   <span className="text-[#bd3939]">i</span> ={' '}
-                  <span className="text-[#bd3939]">i</span> + 1;) &#123;
+                  <span className="text-[#bd3939]">i</span> + 1) &#123;
                 </div>
               </div>
               <div className="mt-4">

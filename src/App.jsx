@@ -19,7 +19,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<Layout presentation={true} />}>
-          <Route path="/presentation" element={<AboutMe />} />
+          <Route path="/about-me" element={<AboutMe />} />
         </Route>
         <Route index element={<Welcome />} />
         <Route path="/" element={<Layout />}>
