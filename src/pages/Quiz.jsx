@@ -17,7 +17,6 @@ function Quiz() {
         setLoading(true)
         const url = '/quiz'
         const { data } = await axiosAPI(url)
-        data.sort(() => 0.5 - Math.random())
         setQuestions(data)
         setLoading(false)
       } catch (error) {
