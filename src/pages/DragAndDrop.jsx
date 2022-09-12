@@ -23,8 +23,6 @@ function DragAndDrop() {
     setNum(randomNumberInRange(1, 3))
   }, [])
 
-  console.log(cards)
-
   useEffect(() => {
     const getCards = async () => {
       try {
@@ -55,8 +53,6 @@ function DragAndDrop() {
     getCards()
     getBoxes()
   }, [num])
-
-  console.log(num)
 
   function randomNumberInRange(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min
@@ -98,9 +94,7 @@ function DragAndDrop() {
         </div>
       </>
 
-      {isOpenModal && (
-        <Modal setIsOpenModal={setIsOpenModal} type="dnd" dataType={num} />
-      )}
+      {isOpenModal && <Modal setIsOpenModal={setIsOpenModal} dataType={num} />}
       {isOpenPopup && <Popup setIsOpenPopup={setIsOpenPopup} />}
     </>
   )

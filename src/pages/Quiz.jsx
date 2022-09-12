@@ -27,6 +27,8 @@ function Quiz() {
     getQuiz()
   }, [])
 
+  console.log(questions)
+
   const optionClicked = (e, isCorrect) => {
     const options = document.querySelectorAll('.options')
 
@@ -72,7 +74,7 @@ function Quiz() {
               Pregunta {currentQuestion + 1} de 10
             </h2>
             <h3
-              className="font-bold text-xl mt-10 text-principiaOrange"
+              className="font-bold text-2xl mt-10 text-principiaOrange"
               dangerouslySetInnerHTML={{
                 __html: questions[currentQuestion].text,
               }}></h3>

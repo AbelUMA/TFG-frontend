@@ -3,7 +3,7 @@
 import { React, useState } from 'react'
 import CodeEditor from '@uiw/react-textarea-code-editor'
 import { motion } from 'framer-motion'
-import Modal from '../components/Modal'
+import ModalProgramming from '../components/ModalProgramming'
 import { BsGearFill } from 'react-icons/bs'
 
 function Programming() {
@@ -116,9 +116,7 @@ function Programming() {
             className="resize-none h-[69.7%] w-full border-2 border-black rounded-md bg-gray-200 px-4 py-2 caret-transparent font-semibold"></textarea>
         </div>
       </div>
-      {isOpenModal && (
-        <Modal setIsOpenModal={setIsOpenModal} type="programming" />
-      )}
+      {isOpenModal && <ModalProgramming setIsOpenModal={setIsOpenModal} />}
     </>
   )
 }
