@@ -90,27 +90,27 @@ function BasicsOfProgramming() {
         {isFirst ? (
           ''
         ) : content.extra && !isContentExtra ? (
-          <div
+          <motion.div
+            whileTap={{ scale: 0.9 }}
             id="example"
             className="flex-col text-center justify-center items-center mt-8 text-3xl font-bold text-principiaBlue underline ">
-            <motion.span
+            <span
               className="cursor-pointer"
-              whileTap={{ scale: 0.9 }}
               onClick={() => handleContent(content.extra, content.id)}>
               Ver ejemplo
-            </motion.span>
-          </div>
+            </span>
+          </motion.div>
         ) : (
-          <div
+          <motion.div
+            whileTap={{ scale: 0.9 }}
             id="example"
             className="flex-col text-center justify-center items-center mt-8 text-3xl font-bold text-principiaBlue underline ">
-            <motion.span
+            <span
               className="cursor-pointer"
-              whileTap={{ scale: 0.9 }}
               onClick={() => handleCloseExample(content.id)}>
               {content.extra ? 'Cerrar' : ''}
-            </motion.span>
-          </div>
+            </span>
+          </motion.div>
         )}
       </div>
     </div>

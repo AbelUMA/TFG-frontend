@@ -215,6 +215,7 @@ function ModalProgramming({ setIsOpenModal }) {
             } text-4xl`}>
             <HiOutlineArrowNarrowLeft />
           </button>
+          <span className="font-bold">{pag}</span>
           <button
             onClick={() => handlePagRight()}
             className={`mr-14 ${
